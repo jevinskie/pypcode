@@ -1,0 +1,3 @@
+[submodule "pypcode/processors/Ghidra-MicroBlaze"]
+	path = pypcode/processors/MicroBlaze
+	url = https://github.com/jevinskie/Ghidra-MicroBlaze
