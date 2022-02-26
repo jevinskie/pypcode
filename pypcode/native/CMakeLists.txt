@@ -62,7 +62,7 @@ if (MSVC)
 		set(PREPROCESSOR_ONLY_FLAGS /DCFFI_CDEF=1 /EP /D_WINDOWS=1 /D_WIN32)
 	endif ()
 else()
-    set(PREPROCESSOR_ONLY_FLAGS -DCFFI_CDEF=1 -E -P)
+    set(PREPROCESSOR_ONLY_FLAGS -DCFFI_CDEF=1 -E -P -D__fsid_t=___fsid_t)
 endif()
 
 add_custom_target(
