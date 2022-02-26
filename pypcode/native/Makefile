@@ -1,5 +1,5 @@
 PROCESSORS_DIR:=../processors
-SPECFILES:=$(shell find $(PROCESSORS_DIR) -name '*.slaspec')
+SPECFILES:=$(shell find -L $(PROCESSORS_DIR) -name '*.slaspec')
 SLAFILES:=$(SPECFILES:.slaspec=.sla)
 SLEIGH_BIN:=./bin/sleigh
 
