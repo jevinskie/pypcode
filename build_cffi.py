@@ -27,6 +27,8 @@ class FfiPreBuildExtension(build_ext):
             cmake_config_args += ['-A', 'x64' if is_64b else 'Win32']
             cmake_build_args += ['--config', 'Release']
 
+        cmake_build_args += ['--config', 'Debug']
+
         # Build sleigh and csleigh library
         subprocess.check_call(['cmake', '-S', '.', '-B', 'build'] + cmake_config_args, cwd=LIB_SRC_DIR)
         subprocess.check_call(['cmake', '--build', 'build', '--parallel', '--verbose'] + cmake_build_args, cwd=LIB_SRC_DIR)
