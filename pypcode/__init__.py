@@ -125,6 +125,7 @@ class Context:
   __slots__ = (
     'lang',
     'ctx_c',
+    'spaces',
     '_cached_addr_spaces',
     )
 
@@ -137,6 +138,11 @@ class Context:
     self.lang = lang
     self.ctx_c = csleigh_createContext(self.lang.slafile_path.encode('utf-8'))
     self.lang.init_context_from_pspec(self.ctx_c)
+    self.spaces = {}
+    num_spaces = csleigh_AddrSpaceManager_numSpaces(self.ctx_c)
+    for i in range(num_spaces):
+      space = AddrSpace.from_c(self, csleigh_AddrSpaceManager_getSpace(self.ctx_c, i))
+      self.spaces[space.name] = space
 
   def __del__(self):
     csleigh_destroyContext(self.ctx_c)
@@ -155,7 +161,7 @@ class Context:
     """
     self._cached_addr_spaces[cobj] = pobj
 
-  def translate(self, code:Union[bytes, bytearray], base:int, max_inst:int = 0, max_bytes:int = 0, bb_terminating:bool = False) -> 'TranslationResult':
+  def translate(self, code:Union[bytes, bytearray, memoryview], base:int, max_inst:int = 0, max_bytes:int = 0, bb_terminating:bool = False) -> 'TranslationResult':
     """
     Disassemble and translate to p-code.
 

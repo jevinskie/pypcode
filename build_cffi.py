@@ -9,6 +9,8 @@ from distutils.command.build_ext import build_ext
 ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 LIB_SRC_DIR = os.path.join(ROOT_DIR, 'pypcode', 'native')
 SLEIGH_BUILD_DIR = os.path.join(LIB_SRC_DIR, 'build')
+# SAN_FLAGS = "-fsanitize=address"
+SAN_FLAGS = ""
 
 class FfiPreBuildExtension(build_ext):
     def pre_run(self, ext, ffi):
@@ -20,9 +22,9 @@ class FfiPreBuildExtension(build_ext):
         cmake_config_args = [
             '-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON',
             '-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE',
-            '-DCMAKE_CXX_FLAGS="-stdlib=libc++"',
-            '-DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++"',
-            '-DCMAKE_MODULE_LINKER_FLAGS="-stdlib=libc++"',
+            f'-DCMAKE_CXX_FLAGS=-stdlib=libc++ {SAN_FLAGS}',
+            f'-DCMAKE_EXE_LINKER_FLAGS=-stdlib=libc++ {SAN_FLAGS}',
+            f'-DCMAKE_MODULE_LINKER_FLAGS=-stdlib=libc++ {SAN_FLAGS}',
             '-DCMAKE_C_COMPILER=clang-14',
             '-DCMAKE_CXX_COMPILER=clang++-14',
             ]
@@ -64,8 +66,10 @@ def ffibuilder():
         """,
         libraries=['csleigh'] + LIBS,
         include_dirs=[LIB_SRC_DIR],
+        extra_compile_args=["-O0", "-ggdb3", f"{SAN_FLAGS if SAN_FLAGS else ''}"],
+        extra_link_args=[f"{SAN_FLAGS if SAN_FLAGS else ''}"],
         library_dirs=[os.path.join(SLEIGH_BUILD_DIR, 'lib')])
     return ffi
 
 if __name__ == "__main__":
-    ffibuilder().compile(verbose=True)
+    ffibuilder().compile(verbose=True, debug=True)
