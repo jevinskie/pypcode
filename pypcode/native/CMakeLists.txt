@@ -17,7 +17,7 @@ endforeach( OUTPUTCONFIG CMAKE_CONFIGURATION_TYPES )
 if (MSVC)
     add_compile_options(/O3 /std:c++14)
 else()
-    add_compile_options(-O3 -Wall -Wno-sign-compare -D__TERMINAL__ -std=c++14)
+    add_compile_options(-O0 -ggdb3 -Wall -Wno-sign-compare -D__TERMINAL__ -std=c++14)
 endif()
 
 set(SLEIGH_COMMON
