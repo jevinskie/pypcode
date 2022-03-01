@@ -247,20 +247,16 @@ public:
 
     bool loadSlaFile(const char *path)
     {
-        try {
-            LOG("%p Loading slafile...", this);
-            m_document = m_document_storage.openDocument(path);
-            m_tags = m_document->getRoot();
-            m_document_storage.registerTag(m_tags);
+        LOG("%p Loading slafile...", this);
+        // FIXME: try/catch XmlError
+        m_document = m_document_storage.openDocument(path);
+        m_tags = m_document->getRoot();
+        m_document_storage.registerTag(m_tags);
 
-            LOG("Setting up translator");
-            m_sleigh.reset(new Sleigh(&m_loader, &m_context_db));
-            m_sleigh->initialize(m_document_storage);
-            m_context_db.finalize();
-        } catch (const LowlevelError& e) {
-            LOG("LowlevelError in loadSlaFile(\"%s\"): %s", path, e.explain.c_str());
-            return false;
-        }
+        LOG("Setting up translator");
+        m_sleigh.reset(new Sleigh(&m_loader, &m_context_db));
+        m_sleigh->initialize(m_document_storage);
+        m_context_db.finalize();
 
         return true;
     }
