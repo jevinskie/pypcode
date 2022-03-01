@@ -103,6 +103,7 @@ OPS_X
 /* Opaque types */
 typedef void *LPX(Context);
 typedef void *LPX(AddrSpace);
+typedef void *LPX(AddrSpaceManager);
 
 typedef struct {
 	LPX(AddrSpace) space;
@@ -213,6 +214,16 @@ const char *LPX(AddrSpace_getName)(LPX(AddrSpace) as);
  * Sleigh::getRegisterName
  */
 const char *LPX(Sleigh_getRegisterName)(LPX(Context) c, LPX(AddrSpace) as, uintb off, int4 size);
+
+/*
+ * AddrSpaceManager::numSpaces
+ */
+int4 LPX(AddrSpaceManager_numSpaces)(LPX(AddrSpaceManager) asmgr);
+
+/*
+ * AddrSpaceManager::getSpace
+ */
+LPX(AddrSpace) LPX(AddrSpaceManager_getSpace)(LPX(AddrSpaceManager) asmgr, int4 spaceNum);
 
 #ifdef __cplusplus
 } /* extern "C" { */

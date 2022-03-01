@@ -411,3 +411,13 @@ const char *LPX(Sleigh_getRegisterName)(LPX(Context) c, LPX(AddrSpace) as,
     return ((TranslationContext *)c)->Sleigh_getRegisterName(
         (AddrSpace *)as, off, size);
 }
+
+int4 LPX(AddrSpaceManager_numSpaces)(LPX(AddrSpaceManager) asmgr)
+{
+    return ((AddrSpaceManager *)asmgr)->numSpaces();
+}
+
+LPX(AddrSpace) LPX(AddrSpaceManager_getSpace)(LPX(AddrSpaceManager) asmgr, int4 spaceNum)
+{
+    return ((AddrSpaceManager *)asmgr)->getSpace(spaceNum);
+}
