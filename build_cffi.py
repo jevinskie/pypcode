@@ -20,6 +20,11 @@ class FfiPreBuildExtension(build_ext):
         cmake_config_args = [
             '-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON',
             '-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE',
+            '-DCMAKE_CXX_FLAGS="-stdlib=libc++"',
+            '-DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++"',
+            '-DCMAKE_MODULE_LINKER_FLAGS="-stdlib=libc++"',
+            '-DCMAKE_C_COMPILER=clang-14',
+            '-DCMAKE_CXX_COMPILER=clang++-14',
             ]
         cmake_build_args = []
         if platform.system() == 'Windows':
@@ -51,7 +56,7 @@ def ffibuilder():
     LIBS = {
         'Windows': [],
         'Darwin': ['c++'],
-        'Linux': ['stdc++']
+        'Linux': ['c++']
     }[platform.system()]
     ffi.set_source("pypcode._csleigh",
         """
