@@ -185,6 +185,17 @@ class Context:
     return ffi.string(csleigh_Sleigh_getRegisterName(
       self.ctx_c, space.to_c(), offset, size)).decode('utf-8')
 
+  def get_register_names(self) -> [str]:
+    res = []
+    cres = csleigh_Translate_getAllRegisterNames(self.ctx_c)
+    cres = ffi.gc(cres, csleigh_free)
+    p = cres
+    while p[0]:
+      sp = ffi.gc(p[0], csleigh_free)
+      res.append(ffi.string(sp).decode('utf-8'))
+      p += 1
+    return res
+
 
 class ContextObj:
 

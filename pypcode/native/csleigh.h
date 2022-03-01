@@ -225,6 +225,16 @@ int4 LPX(AddrSpaceManager_numSpaces)(LPX(AddrSpaceManager) asmgr);
  */
 LPX(AddrSpace) LPX(AddrSpaceManager_getSpace)(LPX(AddrSpaceManager) asmgr, int4 spaceNum);
 
+/*
+ * Translate::getAllRegisterNames (synth from getAllRegisters())
+ */
+const char **LPX(Translate_getAllRegisterNames)(LPX(Context) c);
+
+/*
+ * free
+ */
+void LPX(free)(void *ptr);
+
 #ifdef __cplusplus
 } /* extern "C" { */
 #endif

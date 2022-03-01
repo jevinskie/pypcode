@@ -425,3 +425,22 @@ LPX(AddrSpace) LPX(AddrSpaceManager_getSpace)(LPX(Context) c, int4 spaceNum)
 {
     return ((TranslationContext *)c)->m_sleigh->getSpace(spaceNum);
 }
+
+const char **LPX(Translate_getAllRegisterNames)(LPX(Context) c) {
+    auto *sleigh = ((TranslationContext *)c)->m_sleigh.get();
+    std::map<VarnodeData, std::string> reglist;
+    sleigh->getAllRegisters(reglist);
+    auto res = (const char **)malloc((reglist.size() + 1) * sizeof(const char *));
+    assert(res);
+    const char **p = res;
+    for (const auto &kv : reglist) {
+        *p = strdup(kv.second.c_str());
+        ++p;
+    }
+    *p = nullptr;
+    return res;
+}
+
+void LPX(free)(void *ptr) {
+    free(ptr);
+}
