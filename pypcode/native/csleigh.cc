@@ -412,6 +412,16 @@ const char *LPX(Sleigh_getRegisterName)(LPX(Context) c, LPX(AddrSpace) as,
         (AddrSpace *)as, off, size);
 }
 
+int LPX(Addr_isBigEndian)(LPX(Address) *a)
+{
+    return ((Address *)a)->isBigEndian();
+}
+
+int LPX(AddrSpace_isBigEndian)(LPX(AddrSpace) *as)
+{
+    return ((AddrSpace *)as)->isBigEndian();
+}
+
 int4 LPX(AddrSpaceManager_numSpaces)(LPX(Context) c)
 {
     // auto tc = (TranslationContext *)c;

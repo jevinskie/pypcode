@@ -7,7 +7,7 @@ import sys
 import os.path
 import xml.etree.ElementTree as ET
 from enum import Enum
-from typing import Generator, Sequence, Optional, Mapping, Union
+from typing import Generator, Sequence, Optional, Mapping, Union, Literal
 
 from ._csleigh import ffi
 from ._csleigh.lib import *
@@ -239,6 +239,10 @@ class AddrSpace(ContextObj):
   def to_c(self) -> 'csleigh_AddrSpace':
     return self.cobj
 
+  @property
+  def endianness(self) -> Literal['big', 'little']:
+    return 'big' if csleigh_Addr_isBigEndian(self.to_c()) else 'little'
+
 
 class Address(ContextObj):
 
@@ -280,6 +284,10 @@ class Address(ContextObj):
     a pointer stored in a constant space offset. See Address::getSpaceFromConst.
     """
     return AddrSpace.from_c(self.ctx, csleigh_Addr_getSpaceFromConst(self.to_c()))
+
+  @property
+  def endianness(self) -> Literal['big', 'little']:
+    return 'big' if csleigh_Addr_isBigEndian(self.to_c()) else 'little'
 
 
 class Varnode(ContextObj):
@@ -355,12 +363,21 @@ class PcodeOp(ContextObj):
     'opcode',
     'output',
     'inputs',
+    'da', 'd',
+    'aa', 'a',
+    'ba', 'b'
     )
 
   seq: int
   opcode: OpCode
   output: Optional[Varnode]
   inputs: Sequence[Varnode]
+  da: Optional[Varnode]
+  d: Optional
+  aa: Optional[Varnode]
+  a: Optional
+  ba: Optional[Varnode]
+  b: Optional
 
   def __init__(self, ctx:Context, seq:int, opcode:OpCode, inputs:Sequence[Varnode], output:Optional[Varnode] = None):
     super().__init__(ctx)

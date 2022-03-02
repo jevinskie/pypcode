@@ -216,6 +216,16 @@ const char *LPX(AddrSpace_getName)(LPX(AddrSpace) as);
 const char *LPX(Sleigh_getRegisterName)(LPX(Context) c, LPX(AddrSpace) as, uintb off, int4 size);
 
 /*
+ * Address::isBigEndian
+ */
+int LPX(Addr_isBigEndian)(LPX(Address) *a);
+
+/*
+ * AddressSpace::isBigEndian
+ */
+int LPX(AddrSpace_isBigEndian)(LPX(AddrSpace) *as);
+
+/*
  * AddrSpaceManager::numSpaces
  */
 int4 LPX(AddrSpaceManager_numSpaces)(LPX(AddrSpaceManager) asmgr);
