@@ -241,7 +241,7 @@ class AddrSpace(ContextObj):
 
   @property
   def endianness(self) -> Literal['big', 'little']:
-    return 'big' if csleigh_Addr_isBigEndian(self.to_c()) else 'little'
+    return 'big' if csleigh_AddrSpace_isBigEndian(self.to_c()) else 'little'
 
 
 class Address(ContextObj):
@@ -287,7 +287,7 @@ class Address(ContextObj):
 
   @property
   def endianness(self) -> Literal['big', 'little']:
-    return 'big' if csleigh_Addr_isBigEndian(self.to_c()) else 'little'
+    return 'big' if csleigh_AddrSpace_isBigEndian(self.space.to_c()) else 'little'
 
 
 class Varnode(ContextObj):
