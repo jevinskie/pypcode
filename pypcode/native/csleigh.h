@@ -158,6 +158,7 @@ typedef struct {
 typedef struct {
 	LPX(Address)  address;
 	int4          length;
+	int4 		  length_delay;
 	const char   *asm_mnem;
 	const char   *asm_body;
 	LPX(PcodeOp) *ops;

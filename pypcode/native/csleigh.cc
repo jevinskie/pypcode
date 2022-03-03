@@ -9,7 +9,7 @@
 #include "sleigh/sleigh.hh"
 #include "csleigh.h"
 
-// #define DEBUG
+#define DEBUG
 #ifdef DEBUG
 #define LOG(fmt, ...) fprintf(stderr, "csleigh: " fmt "\n", ## __VA_ARGS__);
 #else
@@ -292,14 +292,15 @@ public:
                 m_sleigh->printAssembly(res->m_asms.back(), addr);
 
                 res->m_pcodes.emplace_back();
-                m_sleigh->oneInstruction(res->m_pcodes.back(), addr);
+                int4 ilen_delay = m_sleigh->oneInstruction(res->m_pcodes.back(), addr);
 
                 res->m_insns.emplace_back();
                 LPX(Translation) &insn = res->m_insns.back();
                 convertAddressToCType(addr, insn.address);
                 insn.length = ilen;
+                insn.length_delay = ilen_delay - ilen;
 
-                offset += ilen;
+                offset += ilen_delay;
 
                 if (bb_terminating) {
                     for (auto op : res->m_pcodes.back().m_ops) {

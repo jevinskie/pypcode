@@ -15,6 +15,7 @@
  */
 #include "sleigh.hh"
 #include "loadimage.hh"
+#include <iostream>
 
 PcodeCacher::PcodeCacher(void)
 
@@ -738,6 +739,7 @@ int4 Sleigh::oneInstruction(PcodeEmit &emit,const Address &baseaddr) const
   pos->applyCommits();
   fallOffset = pos->getLength();
   
+  cerr << "pos->getDelaySlot(): " << pos->getDelaySlot() << "\n";
   if (pos->getDelaySlot()>0) {
     int4 bytecount = 0;
     do {
@@ -745,7 +747,9 @@ int4 Sleigh::oneInstruction(PcodeEmit &emit,const Address &baseaddr) const
       ParserContext *delaypos = obtainContext(pos->getAddr() + fallOffset,ParserContext::pcode);
       delaypos->applyCommits();
       int4 len = delaypos->getLength();
+      cerr << "parsed delay slot len: " << len << "\n";
       fallOffset += len;
+      cerr << "new fallOffset: " << fallOffset << "\n";
       bytecount += len;
     } while(bytecount < pos->getDelaySlot());
     pos->setNaddr(pos->getAddr()+fallOffset);
@@ -773,6 +777,7 @@ int4 Sleigh::oneInstruction(PcodeEmit &emit,const Address &baseaddr) const
     err.instruction_length = fallOffset;
     throw err;
   }
+  cerr << "oneInstruction returning: " << fallOffset << "\n";
   return fallOffset;
 }
 

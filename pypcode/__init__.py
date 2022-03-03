@@ -575,6 +575,7 @@ class Translation(ContextObj):
   __slots__ = (
     'address',
     'length',
+    'length_delay',
     'asm_mnem',
     'asm_body',
     'ops',
@@ -582,14 +583,16 @@ class Translation(ContextObj):
 
   address: Address
   length: int
+  length_delay: int
   asm_mnem: str
   asm_body: str
   ops: Sequence[PcodeOp]
 
-  def __init__(self, ctx:Context, address:Address, length:int, asm_mnem:str, asm_body:str, ops:Sequence[PcodeOp]):
+  def __init__(self, ctx:Context, address:Address, length:int, length_delay:int, asm_mnem:str, asm_body:str, ops:Sequence[PcodeOp]):
     super().__init__(ctx)
     self.address = address
     self.length = length
+    self.length_delay = length_delay
     self.asm_mnem = asm_mnem
     self.asm_body = asm_body
     self.ops = ops
@@ -598,6 +601,7 @@ class Translation(ContextObj):
   def from_c(cls, ctx:Context, cobj:'csleigh_Translation') -> 'Translation':
     return cls(ctx, Address.from_c(ctx, cobj.address),
                cobj.length,
+               cobj.length_delay,
                ffi.string(cobj.asm_mnem).decode('utf-8'),
                ffi.string(cobj.asm_body).decode('utf-8'),
                [PcodeOp.from_c(ctx, cobj.ops[i]) for i in range(cobj.ops_count)])
