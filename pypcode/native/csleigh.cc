@@ -53,7 +53,9 @@ public:
     }
 
     void resetAllVariables() {
+        LOG("ContextPypcode::resetAllVariables()");
         for (const string &nm : m_variables) {
+            LOG("deleting var: %s", nm.c_str());
             auto val = ContextDatabase::getDefaultValue(nm);
             setVariableRegion(nm, Address(Address::m_minimal), Address(), val);
         }

@@ -12,6 +12,9 @@ from typing import Generator, Sequence, Optional, Mapping, Union, Literal
 from ._csleigh import ffi
 from ._csleigh.lib import *
 
+import pretty_traceback
+pretty_traceback.install()
+import sys, traceback
 
 PKG_SRC_DIR = os.path.abspath(os.path.dirname(__file__))
 SPECFILES_DIR = os.path.join(PKG_SRC_DIR, 'processors')
@@ -310,7 +313,11 @@ class Varnode(ContextObj):
 
   @classmethod
   def from_c(cls, ctx:Context, cobj:'csleigh_Varnode') -> 'Varnode':
-    return cls(ctx, AddrSpace.from_c(ctx, cobj.space), cobj.offset, cobj.size)
+    res = cls(ctx, AddrSpace.from_c(ctx, cobj.space), cobj.offset, cobj.size)
+    if res.offset in (0x7E80, 0x8100,):
+      print(f"Varnode.from_c(ctx: {cobj}) = space: {res.space} off: {res.offset:#x} sz: {res.size}")
+      traceback.print_stack()
+    return res
 
   def __str__(self):
     return '%s[%#x:%d]' % (self.space.name, self.offset, self.size)
@@ -365,7 +372,8 @@ class PcodeOp(ContextObj):
     'inputs',
     'da', 'd',
     'aa', 'a',
-    'ba', 'b'
+    'ba', 'b',
+    'address',
     )
 
   seq: int
@@ -378,6 +386,7 @@ class PcodeOp(ContextObj):
   a: Optional
   ba: Optional[Varnode]
   b: Optional
+  address: Optional[int]
 
   def __init__(self, ctx:Context, seq:int, opcode:OpCode, inputs:Sequence[Varnode], output:Optional[Varnode] = None):
     super().__init__(ctx)
@@ -599,12 +608,19 @@ class Translation(ContextObj):
 
   @classmethod
   def from_c(cls, ctx:Context, cobj:'csleigh_Translation') -> 'Translation':
-    return cls(ctx, Address.from_c(ctx, cobj.address),
+    addr = Address.from_c(ctx, cobj.address)
+    ops = []
+    for i in range(cobj.ops_count):
+      cop = cobj.ops[i]
+      op = PcodeOp.from_c(ctx, cop)
+      op.address = addr.offset
+      ops.append(op)
+    return cls(ctx, addr,
                cobj.length,
                cobj.length_delay,
                ffi.string(cobj.asm_mnem).decode('utf-8'),
                ffi.string(cobj.asm_body).decode('utf-8'),
-               [PcodeOp.from_c(ctx, cobj.ops[i]) for i in range(cobj.ops_count)])
+               ops)
 
 
 class SleighError(Exception):
@@ -704,7 +720,12 @@ class TranslationResult(ContextObj):
 
   @classmethod
   def from_c(cls, ctx:Context, cobj:'csleigh_TranslationResult') -> 'TranslationResult':
+    insts = []
+    for i in range(cobj.instructions_count):
+      cinst = cobj.instructions[i]
+      inst = Translation.from_c(ctx, cinst)
+      insts.append(inst)
     return cls(ctx,
-      [Translation.from_c(ctx, cobj.instructions[i]) for i in range(cobj.instructions_count)],
+      insts,
       SleighErrorFactory.from_c(ctx, cobj.error)
       )
