@@ -1,23 +1,9 @@
-/* ###
- * IP: GHIDRA
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/* A Bison parser, made by GNU Bison 3.0.4.  */
+/* A Bison parser, made by GNU Bison 3.5.1.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -55,11 +41,14 @@
    define necessary library symbols; they are noted "INFRINGES ON
    USER NAME SPACE" below.  */
 
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
+
 /* Identify Bison output.  */
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "3.0.4"
+#define YYBISON_VERSION "3.5.1"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -76,8 +65,8 @@
 
 
 
-/* Copy the first part of user declarations.  */
-#line 16 "src/decompile/cpp/slghparse.y" /* yacc.c:339  */
+/* First part of user prologue.  */
+#line 16 "slghparse.y"
 
 #include "slgh_compile.hh"
 
@@ -88,15 +77,29 @@
   extern FILE *yyin;
   extern int yydebug;
   extern int yylex(void);
+  extern int yylineno;
   extern int yyerror(const char *str );
 
-#line 79 "src/decompile/cpp/slghparse.cc" /* yacc.c:339  */
+#line 84 "slghparse.cc"
 
-# ifndef YY_NULLPTR
-#  if defined __cplusplus && 201103L <= __cplusplus
-#   define YY_NULLPTR nullptr
+# ifndef YY_CAST
+#  ifdef __cplusplus
+#   define YY_CAST(Type, Val) static_cast<Type> (Val)
+#   define YY_REINTERPRET_CAST(Type, Val) reinterpret_cast<Type> (Val)
 #  else
-#   define YY_NULLPTR 0
+#   define YY_CAST(Type, Val) ((Type) (Val))
+#   define YY_REINTERPRET_CAST(Type, Val) ((Type) (Val))
+#  endif
+# endif
+# ifndef YY_NULLPTR
+#  if defined __cplusplus
+#   if 201103L <= __cplusplus
+#    define YY_NULLPTR nullptr
+#   else
+#    define YY_NULLPTR 0
+#   endif
+#  else
+#   define YY_NULLPTR ((void*)0)
 #  endif
 # endif
 
@@ -108,10 +111,10 @@
 # define YYERROR_VERBOSE 0
 #endif
 
-/* In a future release of Bison, this section will be replaced
-   by #include "slghparse.hh".  */
-#ifndef YY_YY_SRC_DECOMPILE_CPP_SLGHPARSE_HH_INCLUDED
-# define YY_YY_SRC_DECOMPILE_CPP_SLGHPARSE_HH_INCLUDED
+/* Use api.header.include to #include this header
+   instead of duplicating it here.  */
+#ifndef YY_YY_SLGHPARSE_HH_INCLUDED
+# define YY_YY_SLGHPARSE_HH_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -241,10 +244,9 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-
 union YYSTYPE
 {
-#line 29 "src/decompile/cpp/slghparse.y" /* yacc.c:355  */
+#line 32 "slghparse.y"
 
   char ch;
   uintb *i;
@@ -288,51 +290,110 @@ union YYSTYPE
   FamilySymbol *famsym;
   SpecificSymbol *specsym;
 
-#line 277 "src/decompile/cpp/slghparse.cc" /* yacc.c:355  */
-};
+#line 294 "slghparse.cc"
 
+};
 typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
+/* Location type.  */
+#if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
+typedef struct YYLTYPE YYLTYPE;
+struct YYLTYPE
+{
+  int first_line;
+  int first_column;
+  int last_line;
+  int last_column;
+};
+# define YYLTYPE_IS_DECLARED 1
+# define YYLTYPE_IS_TRIVIAL 1
+#endif
+
 
 extern YYSTYPE yylval;
-
+extern YYLTYPE yylloc;
 int yyparse (void);
 
-#endif /* !YY_YY_SRC_DECOMPILE_CPP_SLGHPARSE_HH_INCLUDED  */
+#endif /* !YY_YY_SLGHPARSE_HH_INCLUDED  */
 
-/* Copy the second part of user declarations.  */
 
-#line 294 "src/decompile/cpp/slghparse.cc" /* yacc.c:358  */
 
 #ifdef short
 # undef short
 #endif
 
-#ifdef YYTYPE_UINT8
-typedef YYTYPE_UINT8 yytype_uint8;
-#else
-typedef unsigned char yytype_uint8;
+/* On compilers that do not define __PTRDIFF_MAX__ etc., make sure
+   <limits.h> and (if available) <stdint.h> are included
+   so that the code can choose integer types of a good width.  */
+
+#ifndef __PTRDIFF_MAX__
+# include <limits.h> /* INFRINGES ON USER NAME SPACE */
+# if defined __STDC_VERSION__ && 199901 <= __STDC_VERSION__
+#  include <stdint.h> /* INFRINGES ON USER NAME SPACE */
+#  define YY_STDINT_H
+# endif
 #endif
 
-#ifdef YYTYPE_INT8
-typedef YYTYPE_INT8 yytype_int8;
+/* Narrow types that promote to a signed type and that can represent a
+   signed or unsigned integer of at least N bits.  In tables they can
+   save space and decrease cache pressure.  Promoting to a signed type
+   helps avoid bugs in integer arithmetic.  */
+
+#ifdef __INT_LEAST8_MAX__
+typedef __INT_LEAST8_TYPE__ yytype_int8;
+#elif defined YY_STDINT_H
+typedef int_least8_t yytype_int8;
 #else
 typedef signed char yytype_int8;
 #endif
 
-#ifdef YYTYPE_UINT16
-typedef YYTYPE_UINT16 yytype_uint16;
+#ifdef __INT_LEAST16_MAX__
+typedef __INT_LEAST16_TYPE__ yytype_int16;
+#elif defined YY_STDINT_H
+typedef int_least16_t yytype_int16;
 #else
-typedef unsigned short int yytype_uint16;
+typedef short yytype_int16;
 #endif
 
-#ifdef YYTYPE_INT16
-typedef YYTYPE_INT16 yytype_int16;
+#if defined __UINT_LEAST8_MAX__ && __UINT_LEAST8_MAX__ <= __INT_MAX__
+typedef __UINT_LEAST8_TYPE__ yytype_uint8;
+#elif (!defined __UINT_LEAST8_MAX__ && defined YY_STDINT_H \
+       && UINT_LEAST8_MAX <= INT_MAX)
+typedef uint_least8_t yytype_uint8;
+#elif !defined __UINT_LEAST8_MAX__ && UCHAR_MAX <= INT_MAX
+typedef unsigned char yytype_uint8;
 #else
-typedef short int yytype_int16;
+typedef short yytype_uint8;
+#endif
+
+#if defined __UINT_LEAST16_MAX__ && __UINT_LEAST16_MAX__ <= __INT_MAX__
+typedef __UINT_LEAST16_TYPE__ yytype_uint16;
+#elif (!defined __UINT_LEAST16_MAX__ && defined YY_STDINT_H \
+       && UINT_LEAST16_MAX <= INT_MAX)
+typedef uint_least16_t yytype_uint16;
+#elif !defined __UINT_LEAST16_MAX__ && USHRT_MAX <= INT_MAX
+typedef unsigned short yytype_uint16;
+#else
+typedef int yytype_uint16;
+#endif
+
+#ifndef YYPTRDIFF_T
+# if defined __PTRDIFF_TYPE__ && defined __PTRDIFF_MAX__
+#  define YYPTRDIFF_T __PTRDIFF_TYPE__
+#  define YYPTRDIFF_MAXIMUM __PTRDIFF_MAX__
+# elif defined PTRDIFF_MAX
+#  ifndef ptrdiff_t
+#   include <stddef.h> /* INFRINGES ON USER NAME SPACE */
+#  endif
+#  define YYPTRDIFF_T ptrdiff_t
+#  define YYPTRDIFF_MAXIMUM PTRDIFF_MAX
+# else
+#  define YYPTRDIFF_T long
+#  define YYPTRDIFF_MAXIMUM LONG_MAX
+# endif
 #endif
 
 #ifndef YYSIZE_T
@@ -340,15 +401,27 @@ typedef short int yytype_int16;
 #  define YYSIZE_T __SIZE_TYPE__
 # elif defined size_t
 #  define YYSIZE_T size_t
-# elif ! defined YYSIZE_T
+# elif defined __STDC_VERSION__ && 199901 <= __STDC_VERSION__
 #  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
 #  define YYSIZE_T size_t
 # else
-#  define YYSIZE_T unsigned int
+#  define YYSIZE_T unsigned
 # endif
 #endif
 
-#define YYSIZE_MAXIMUM ((YYSIZE_T) -1)
+#define YYSIZE_MAXIMUM                                  \
+  YY_CAST (YYPTRDIFF_T,                                 \
+           (YYPTRDIFF_MAXIMUM < YY_CAST (YYSIZE_T, -1)  \
+            ? YYPTRDIFF_MAXIMUM                         \
+            : YY_CAST (YYSIZE_T, -1)))
+
+#define YYSIZEOF(X) YY_CAST (YYPTRDIFF_T, sizeof (X))
+
+/* Stored state numbers (used for stacks). */
+typedef yytype_int16 yy_state_t;
+
+/* State numbers in computations.  */
+typedef int yy_state_fast_t;
 
 #ifndef YY_
 # if defined YYENABLE_NLS && YYENABLE_NLS
@@ -362,30 +435,19 @@ typedef short int yytype_int16;
 # endif
 #endif
 
-#ifndef YY_ATTRIBUTE
-# if (defined __GNUC__                                               \
-      && (2 < __GNUC__ || (__GNUC__ == 2 && 96 <= __GNUC_MINOR__)))  \
-     || defined __SUNPRO_C && 0x5110 <= __SUNPRO_C
-#  define YY_ATTRIBUTE(Spec) __attribute__(Spec)
+#ifndef YY_ATTRIBUTE_PURE
+# if defined __GNUC__ && 2 < __GNUC__ + (96 <= __GNUC_MINOR__)
+#  define YY_ATTRIBUTE_PURE __attribute__ ((__pure__))
 # else
-#  define YY_ATTRIBUTE(Spec) /* empty */
+#  define YY_ATTRIBUTE_PURE
 # endif
 #endif
 
-#ifndef YY_ATTRIBUTE_PURE
-# define YY_ATTRIBUTE_PURE   YY_ATTRIBUTE ((__pure__))
-#endif
-
 #ifndef YY_ATTRIBUTE_UNUSED
-# define YY_ATTRIBUTE_UNUSED YY_ATTRIBUTE ((__unused__))
-#endif
-
-#if !defined _Noreturn \
-     && (!defined __STDC_VERSION__ || __STDC_VERSION__ < 201112)
-# if defined _MSC_VER && 1200 <= _MSC_VER
-#  define _Noreturn __declspec (noreturn)
+# if defined __GNUC__ && 2 < __GNUC__ + (7 <= __GNUC_MINOR__)
+#  define YY_ATTRIBUTE_UNUSED __attribute__ ((__unused__))
 # else
-#  define _Noreturn YY_ATTRIBUTE ((__noreturn__))
+#  define YY_ATTRIBUTE_UNUSED
 # endif
 #endif
 
@@ -396,13 +458,13 @@ typedef short int yytype_int16;
 # define YYUSE(E) /* empty */
 #endif
 
-#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
+#if defined __GNUC__ && ! defined __ICC && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
 /* Suppress an incorrect diagnostic about yylval being uninitialized.  */
-# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
-    _Pragma ("GCC diagnostic push") \
-    _Pragma ("GCC diagnostic ignored \"-Wuninitialized\"")\
+# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN                            \
+    _Pragma ("GCC diagnostic push")                                     \
+    _Pragma ("GCC diagnostic ignored \"-Wuninitialized\"")              \
     _Pragma ("GCC diagnostic ignored \"-Wmaybe-uninitialized\"")
-# define YY_IGNORE_MAYBE_UNINITIALIZED_END \
+# define YY_IGNORE_MAYBE_UNINITIALIZED_END      \
     _Pragma ("GCC diagnostic pop")
 #else
 # define YY_INITIAL_VALUE(Value) Value
@@ -415,6 +477,20 @@ typedef short int yytype_int16;
 # define YY_INITIAL_VALUE(Value) /* Nothing. */
 #endif
 
+#if defined __cplusplus && defined __GNUC__ && ! defined __ICC && 6 <= __GNUC__
+# define YY_IGNORE_USELESS_CAST_BEGIN                          \
+    _Pragma ("GCC diagnostic push")                            \
+    _Pragma ("GCC diagnostic ignored \"-Wuseless-cast\"")
+# define YY_IGNORE_USELESS_CAST_END            \
+    _Pragma ("GCC diagnostic pop")
+#endif
+#ifndef YY_IGNORE_USELESS_CAST_BEGIN
+# define YY_IGNORE_USELESS_CAST_BEGIN
+# define YY_IGNORE_USELESS_CAST_END
+#endif
+
+
+#define YY_ASSERT(E) ((void) (0 && (E)))
 
 #if ! defined yyoverflow || YYERROR_VERBOSE
 
@@ -486,23 +562,26 @@ void free (void *); /* INFRINGES ON USER NAME SPACE */
 
 #if (! defined yyoverflow \
      && (! defined __cplusplus \
-         || (defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
+         || (defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL \
+             && defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
 
 /* A type that is properly aligned for any stack member.  */
 union yyalloc
 {
-  yytype_int16 yyss_alloc;
+  yy_state_t yyss_alloc;
   YYSTYPE yyvs_alloc;
+  YYLTYPE yyls_alloc;
 };
 
 /* The size of the maximum gap between one aligned stack and the next.  */
-# define YYSTACK_GAP_MAXIMUM (sizeof (union yyalloc) - 1)
+# define YYSTACK_GAP_MAXIMUM (YYSIZEOF (union yyalloc) - 1)
 
 /* The size of an array large to enough to hold all stacks, each with
    N elements.  */
 # define YYSTACK_BYTES(N) \
-     ((N) * (sizeof (yytype_int16) + sizeof (YYSTYPE)) \
-      + YYSTACK_GAP_MAXIMUM)
+     ((N) * (YYSIZEOF (yy_state_t) + YYSIZEOF (YYSTYPE) \
+             + YYSIZEOF (YYLTYPE)) \
+      + 2 * YYSTACK_GAP_MAXIMUM)
 
 # define YYCOPY_NEEDED 1
 
@@ -514,11 +593,11 @@ union yyalloc
 # define YYSTACK_RELOCATE(Stack_alloc, Stack)                           \
     do                                                                  \
       {                                                                 \
-        YYSIZE_T yynewbytes;                                            \
+        YYPTRDIFF_T yynewbytes;                                         \
         YYCOPY (&yyptr->Stack_alloc, Stack, yysize);                    \
         Stack = &yyptr->Stack_alloc;                                    \
-        yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
-        yyptr += yynewbytes / sizeof (*yyptr);                          \
+        yynewbytes = yystacksize * YYSIZEOF (*Stack) + YYSTACK_GAP_MAXIMUM; \
+        yyptr += yynewbytes / YYSIZEOF (*yyptr);                        \
       }                                                                 \
     while (0)
 
@@ -530,12 +609,12 @@ union yyalloc
 # ifndef YYCOPY
 #  if defined __GNUC__ && 1 < __GNUC__
 #   define YYCOPY(Dst, Src, Count) \
-      __builtin_memcpy (Dst, Src, (Count) * sizeof (*(Src)))
+      __builtin_memcpy (Dst, Src, YY_CAST (YYSIZE_T, (Count)) * sizeof (*(Src)))
 #  else
 #   define YYCOPY(Dst, Src, Count)              \
       do                                        \
         {                                       \
-          YYSIZE_T yyi;                         \
+          YYPTRDIFF_T yyi;                      \
           for (yyi = 0; yyi < (Count); yyi++)   \
             (Dst)[yyi] = (Src)[yyi];            \
         }                                       \
@@ -558,16 +637,17 @@ union yyalloc
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  713
 
-/* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
-   by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   368
 
+
+/* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
+   as returned by yylex, with out-of-bounds checking.  */
 #define YYTRANSLATE(YYX)                                                \
-  ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+  (0 <= (YYX) && (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
 
 /* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
-   as returned by yylex, without out-of-bounds checking.  */
+   as returned by yylex.  */
 static const yytype_uint8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -611,42 +691,42 @@ static const yytype_uint8 yytranslate[] =
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_uint16 yyrline[] =
+static const yytype_int16 yyrline[] =
 {
-       0,   156,   156,   157,   158,   159,   161,   162,   163,   164,
-     165,   166,   167,   168,   169,   170,   172,   173,   174,   175,
-     177,   178,   180,   182,   184,   185,   186,   187,   188,   190,
-     192,   193,   196,   197,   198,   199,   200,   202,   203,   204,
-     205,   206,   207,   209,   211,   212,   213,   214,   215,   216,
-     217,   219,   221,   223,   225,   226,   228,   231,   233,   235,
-     237,   239,   242,   244,   245,   246,   248,   250,   251,   252,
-     255,   256,   259,   261,   262,   263,   265,   266,   268,   269,
-     270,   271,   272,   273,   274,   275,   276,   278,   279,   280,
-     281,   283,   285,   288,   289,   290,   291,   292,   293,   294,
-     295,   296,   297,   298,   299,   300,   302,   303,   304,   305,
-     307,   308,   310,   311,   313,   314,   316,   317,   318,   319,
-     320,   321,   322,   325,   326,   327,   328,   330,   331,   333,
-     334,   335,   336,   337,   338,   340,   341,   343,   345,   346,
-     348,   349,   350,   351,   352,   354,   355,   356,   357,   359,
-     360,   361,   362,   363,   364,   365,   366,   367,   368,   369,
-     370,   371,   372,   373,   374,   375,   376,   377,   378,   379,
-     380,   381,   382,   383,   385,   386,   387,   388,   389,   390,
-     391,   392,   393,   394,   395,   396,   397,   398,   399,   400,
-     401,   402,   403,   404,   405,   406,   407,   408,   409,   410,
-     411,   412,   413,   414,   415,   416,   417,   418,   419,   420,
-     421,   422,   423,   424,   425,   426,   427,   428,   429,   430,
-     431,   432,   433,   434,   435,   436,   437,   438,   439,   440,
-     441,   442,   443,   444,   445,   446,   447,   448,   449,   450,
-     452,   453,   454,   455,   457,   458,   459,   460,   461,   462,
-     463,   464,   466,   467,   468,   469,   471,   472,   473,   474,
-     475,   477,   478,   479,   481,   482,   484,   485,   486,   487,
-     488,   489,   491,   492,   493,   494,   495,   497,   498,   499,
-     500,   501,   503,   504,   506,   507,   508,   510,   511,   512,
-     514,   515,   516,   519,   520,   522,   523,   524,   526,   528,
-     529,   530,   531,   533,   534,   535,   537,   538,   539,   540,
-     541,   543,   544,   546,   547,   549,   550,   553,   554,   555,
-     557,   558,   559,   561,   562,   563,   564,   565,   566,   567,
-     568,   569,   570,   571,   572,   573,   574,   575,   576
+       0,   159,   159,   160,   161,   162,   164,   165,   166,   167,
+     168,   169,   170,   171,   172,   173,   175,   176,   177,   178,
+     180,   181,   183,   185,   187,   188,   189,   190,   191,   193,
+     195,   196,   199,   200,   201,   202,   203,   205,   206,   207,
+     208,   209,   210,   212,   214,   215,   216,   217,   218,   219,
+     220,   222,   224,   226,   228,   229,   231,   234,   236,   238,
+     240,   242,   245,   247,   248,   249,   251,   253,   254,   255,
+     258,   259,   262,   264,   265,   266,   268,   269,   271,   272,
+     273,   274,   275,   276,   277,   278,   279,   281,   282,   283,
+     284,   286,   288,   291,   292,   293,   294,   295,   296,   297,
+     298,   299,   300,   301,   302,   303,   305,   306,   307,   308,
+     310,   311,   313,   314,   316,   317,   319,   320,   321,   322,
+     323,   324,   325,   328,   329,   330,   331,   333,   334,   336,
+     337,   338,   339,   340,   341,   343,   344,   346,   348,   349,
+     351,   352,   353,   354,   355,   357,   358,   359,   360,   362,
+     363,   364,   365,   366,   367,   368,   369,   370,   371,   372,
+     373,   374,   375,   376,   377,   378,   379,   380,   381,   382,
+     383,   384,   385,   386,   388,   389,   390,   391,   392,   393,
+     394,   395,   396,   397,   398,   399,   400,   401,   402,   403,
+     404,   405,   406,   407,   408,   409,   410,   411,   412,   413,
+     414,   415,   416,   417,   418,   419,   420,   421,   422,   423,
+     424,   425,   426,   427,   428,   429,   430,   431,   432,   433,
+     434,   435,   436,   437,   438,   439,   440,   441,   442,   443,
+     444,   445,   446,   447,   448,   449,   450,   451,   452,   453,
+     455,   456,   457,   458,   460,   461,   462,   463,   464,   465,
+     466,   467,   469,   470,   471,   472,   474,   475,   476,   477,
+     478,   480,   481,   482,   484,   485,   487,   488,   489,   490,
+     491,   492,   494,   495,   496,   497,   498,   500,   501,   502,
+     503,   504,   506,   507,   509,   510,   511,   513,   514,   515,
+     517,   518,   519,   522,   523,   525,   526,   527,   529,   531,
+     532,   533,   534,   536,   537,   538,   540,   541,   542,   543,
+     544,   546,   547,   549,   550,   552,   553,   556,   557,   558,
+     560,   561,   562,   564,   565,   566,   567,   568,   569,   570,
+     571,   572,   573,   574,   575,   576,   577,   578,   579
 };
 #endif
 
@@ -700,7 +780,7 @@ static const char *const yytname[] =
 # ifdef YYPRINT
 /* YYTOKNUM[NUM] -- (External) token number corresponding to the
    (internal) symbol number NUM (which must be that of a token).  */
-static const yytype_uint16 yytoknum[] =
+static const yytype_int16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   124,   261,    59,    94,
      262,    38,   263,   264,   265,   266,   267,    60,    62,   268,
@@ -719,15 +799,15 @@ static const yytype_uint16 yytoknum[] =
 };
 # endif
 
-#define YYPACT_NINF -313
+#define YYPACT_NINF (-313)
 
-#define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-313)))
+#define yypact_value_is_default(Yyn) \
+  ((Yyn) == YYPACT_NINF)
 
-#define YYTABLE_NINF -271
+#define YYTABLE_NINF (-271)
 
-#define yytable_value_is_error(Yytable_value) \
-  (!!((Yytable_value) == (-271)))
+#define yytable_value_is_error(Yyn) \
+  ((Yyn) == YYTABLE_NINF)
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
@@ -810,7 +890,7 @@ static const yytype_int16 yypact[] =
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
      Performed when YYTABLE does not specify something else to do.  Zero
      means the default is an error.  */
-static const yytype_uint16 yydefact[] =
+static const yytype_int16 yydefact[] =
 {
        0,     0,     0,     2,     0,     1,     0,     0,     0,     0,
       67,     0,     0,    89,     4,     5,     3,     6,     0,     7,
@@ -1573,7 +1653,7 @@ static const yytype_uint8 yyr1[] =
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
-static const yytype_uint8 yyr2[] =
+static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     2,     2,     2,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     2,     1,     1,     1,     2,
@@ -1624,27 +1704,53 @@ static const yytype_uint8 yyr2[] =
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
-#define YYBACKUP(Token, Value)                                  \
-do                                                              \
-  if (yychar == YYEMPTY)                                        \
-    {                                                           \
-      yychar = (Token);                                         \
-      yylval = (Value);                                         \
-      YYPOPSTACK (yylen);                                       \
-      yystate = *yyssp;                                         \
-      goto yybackup;                                            \
-    }                                                           \
-  else                                                          \
-    {                                                           \
-      yyerror (YY_("syntax error: cannot back up")); \
-      YYERROR;                                                  \
-    }                                                           \
-while (0)
+#define YYBACKUP(Token, Value)                                    \
+  do                                                              \
+    if (yychar == YYEMPTY)                                        \
+      {                                                           \
+        yychar = (Token);                                         \
+        yylval = (Value);                                         \
+        YYPOPSTACK (yylen);                                       \
+        yystate = *yyssp;                                         \
+        goto yybackup;                                            \
+      }                                                           \
+    else                                                          \
+      {                                                           \
+        yyerror (YY_("syntax error: cannot back up")); \
+        YYERROR;                                                  \
+      }                                                           \
+  while (0)
 
 /* Error token number */
 #define YYTERROR        1
 #define YYERRCODE       256
 
+
+/* YYLLOC_DEFAULT -- Set CURRENT to span from RHS[1] to RHS[N].
+   If N is 0, then set CURRENT to the empty location which ends
+   the previous symbol: RHS[0] (always defined).  */
+
+#ifndef YYLLOC_DEFAULT
+# define YYLLOC_DEFAULT(Current, Rhs, N)                                \
+    do                                                                  \
+      if (N)                                                            \
+        {                                                               \
+          (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;        \
+          (Current).first_column = YYRHSLOC (Rhs, 1).first_column;      \
+          (Current).last_line    = YYRHSLOC (Rhs, N).last_line;         \
+          (Current).last_column  = YYRHSLOC (Rhs, N).last_column;       \
+        }                                                               \
+      else                                                              \
+        {                                                               \
+          (Current).first_line   = (Current).last_line   =              \
+            YYRHSLOC (Rhs, 0).last_line;                                \
+          (Current).first_column = (Current).last_column =              \
+            YYRHSLOC (Rhs, 0).last_column;                              \
+        }                                                               \
+    while (0)
+#endif
+
+#define YYRHSLOC(Rhs, K) ((Rhs)[K])
 
 
 /* Enable debugging if requested.  */
@@ -1661,9 +1767,48 @@ do {                                            \
     YYFPRINTF Args;                             \
 } while (0)
 
-/* This macro is provided for backward compatibility. */
+
+/* YY_LOCATION_PRINT -- Print the location on the stream.
+   This macro was not mandated originally: define only if we know
+   we won't break user code: when these are the locations we know.  */
+
 #ifndef YY_LOCATION_PRINT
-# define YY_LOCATION_PRINT(File, Loc) ((void) 0)
+# if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+
+/* Print *YYLOCP on YYO.  Private, do not rely on its existence. */
+
+YY_ATTRIBUTE_UNUSED
+static int
+yy_location_print_ (FILE *yyo, YYLTYPE const * const yylocp)
+{
+  int res = 0;
+  int end_col = 0 != yylocp->last_column ? yylocp->last_column - 1 : 0;
+  if (0 <= yylocp->first_line)
+    {
+      res += YYFPRINTF (yyo, "%d", yylocp->first_line);
+      if (0 <= yylocp->first_column)
+        res += YYFPRINTF (yyo, ".%d", yylocp->first_column);
+    }
+  if (0 <= yylocp->last_line)
+    {
+      if (yylocp->first_line < yylocp->last_line)
+        {
+          res += YYFPRINTF (yyo, "-%d", yylocp->last_line);
+          if (0 <= end_col)
+            res += YYFPRINTF (yyo, ".%d", end_col);
+        }
+      else if (0 <= end_col && yylocp->first_column < end_col)
+        res += YYFPRINTF (yyo, "-%d", end_col);
+    }
+  return res;
+ }
+
+#  define YY_LOCATION_PRINT(File, Loc)          \
+  yy_location_print_ (File, &(Loc))
+
+# else
+#  define YY_LOCATION_PRINT(File, Loc) ((void) 0)
+# endif
 #endif
 
 
@@ -1673,43 +1818,48 @@ do {                                                                      \
     {                                                                     \
       YYFPRINTF (stderr, "%s ", Title);                                   \
       yy_symbol_print (stderr,                                            \
-                  Type, Value); \
+                  Type, Value, Location); \
       YYFPRINTF (stderr, "\n");                                           \
     }                                                                     \
 } while (0)
 
 
-/*----------------------------------------.
-| Print this symbol's value on YYOUTPUT.  |
-`----------------------------------------*/
+/*-----------------------------------.
+| Print this symbol's value on YYO.  |
+`-----------------------------------*/
 
 static void
-yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
+yy_symbol_value_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp)
 {
-  FILE *yyo = yyoutput;
-  YYUSE (yyo);
+  FILE *yyoutput = yyo;
+  YYUSE (yyoutput);
+  YYUSE (yylocationp);
   if (!yyvaluep)
     return;
 # ifdef YYPRINT
   if (yytype < YYNTOKENS)
-    YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
+    YYPRINT (yyo, yytoknum[yytype], *yyvaluep);
 # endif
+  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   YYUSE (yytype);
+  YY_IGNORE_MAYBE_UNINITIALIZED_END
 }
 
 
-/*--------------------------------.
-| Print this symbol on YYOUTPUT.  |
-`--------------------------------*/
+/*---------------------------.
+| Print this symbol on YYO.  |
+`---------------------------*/
 
 static void
-yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
+yy_symbol_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp)
 {
-  YYFPRINTF (yyoutput, "%s %s (",
+  YYFPRINTF (yyo, "%s %s (",
              yytype < YYNTOKENS ? "token" : "nterm", yytname[yytype]);
 
-  yy_symbol_value_print (yyoutput, yytype, yyvaluep);
-  YYFPRINTF (yyoutput, ")");
+  YY_LOCATION_PRINT (yyo, *yylocationp);
+  YYFPRINTF (yyo, ": ");
+  yy_symbol_value_print (yyo, yytype, yyvaluep, yylocationp);
+  YYFPRINTF (yyo, ")");
 }
 
 /*------------------------------------------------------------------.
@@ -1718,7 +1868,7 @@ yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
 `------------------------------------------------------------------*/
 
 static void
-yy_stack_print (yytype_int16 *yybottom, yytype_int16 *yytop)
+yy_stack_print (yy_state_t *yybottom, yy_state_t *yytop)
 {
   YYFPRINTF (stderr, "Stack now");
   for (; yybottom <= yytop; yybottom++)
@@ -1741,21 +1891,21 @@ do {                                                            \
 `------------------------------------------------*/
 
 static void
-yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule)
+yy_reduce_print (yy_state_t *yyssp, YYSTYPE *yyvsp, YYLTYPE *yylsp, int yyrule)
 {
-  unsigned long int yylno = yyrline[yyrule];
+  int yylno = yyrline[yyrule];
   int yynrhs = yyr2[yyrule];
   int yyi;
-  YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
+  YYFPRINTF (stderr, "Reducing stack by rule %d (line %d):\n",
              yyrule - 1, yylno);
   /* The symbols being reduced.  */
   for (yyi = 0; yyi < yynrhs; yyi++)
     {
       YYFPRINTF (stderr, "   $%d = ", yyi + 1);
       yy_symbol_print (stderr,
-                       yystos[yyssp[yyi + 1 - yynrhs]],
-                       &(yyvsp[(yyi + 1) - (yynrhs)])
-                                              );
+                       yystos[+yyssp[yyi + 1 - yynrhs]],
+                       &yyvsp[(yyi + 1) - (yynrhs)]
+                       , &(yylsp[(yyi + 1) - (yynrhs)])                       );
       YYFPRINTF (stderr, "\n");
     }
 }
@@ -1763,7 +1913,7 @@ yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule)
 # define YY_REDUCE_PRINT(Rule)          \
 do {                                    \
   if (yydebug)                          \
-    yy_reduce_print (yyssp, yyvsp, Rule); \
+    yy_reduce_print (yyssp, yyvsp, yylsp, Rule); \
 } while (0)
 
 /* Nonzero means print parse trace.  It is left uninitialized so that
@@ -1798,13 +1948,13 @@ int yydebug;
 
 # ifndef yystrlen
 #  if defined __GLIBC__ && defined _STRING_H
-#   define yystrlen strlen
+#   define yystrlen(S) (YY_CAST (YYPTRDIFF_T, strlen (S)))
 #  else
 /* Return the length of YYSTR.  */
-static YYSIZE_T
+static YYPTRDIFF_T
 yystrlen (const char *yystr)
 {
-  YYSIZE_T yylen;
+  YYPTRDIFF_T yylen;
   for (yylen = 0; yystr[yylen]; yylen++)
     continue;
   return yylen;
@@ -1840,12 +1990,12 @@ yystpcpy (char *yydest, const char *yysrc)
    backslash-backslash).  YYSTR is taken from yytname.  If YYRES is
    null, do not copy; instead, return the length of what the result
    would have been.  */
-static YYSIZE_T
+static YYPTRDIFF_T
 yytnamerr (char *yyres, const char *yystr)
 {
   if (*yystr == '"')
     {
-      YYSIZE_T yyn = 0;
+      YYPTRDIFF_T yyn = 0;
       char const *yyp = yystr;
 
       for (;;)
@@ -1858,7 +2008,10 @@ yytnamerr (char *yyres, const char *yystr)
           case '\\':
             if (*++yyp != '\\')
               goto do_not_strip_quotes;
-            /* Fall through.  */
+            else
+              goto append;
+
+          append:
           default:
             if (yyres)
               yyres[yyn] = *yyp;
@@ -1873,10 +2026,10 @@ yytnamerr (char *yyres, const char *yystr)
     do_not_strip_quotes: ;
     }
 
-  if (! yyres)
+  if (yyres)
+    return yystpcpy (yyres, yystr) - yyres;
+  else
     return yystrlen (yystr);
-
-  return yystpcpy (yyres, yystr) - yyres;
 }
 # endif
 
@@ -1889,19 +2042,19 @@ yytnamerr (char *yyres, const char *yystr)
    *YYMSG_ALLOC to the required number of bytes.  Return 2 if the
    required number of bytes is too large to store.  */
 static int
-yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
-                yytype_int16 *yyssp, int yytoken)
+yysyntax_error (YYPTRDIFF_T *yymsg_alloc, char **yymsg,
+                yy_state_t *yyssp, int yytoken)
 {
-  YYSIZE_T yysize0 = yytnamerr (YY_NULLPTR, yytname[yytoken]);
-  YYSIZE_T yysize = yysize0;
   enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
   /* Internationalized format string. */
   const char *yyformat = YY_NULLPTR;
-  /* Arguments of yyformat. */
+  /* Arguments of yyformat: reported tokens (one for the "unexpected",
+     one per "expected"). */
   char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
-  /* Number of reported tokens (one for the "unexpected", one per
-     "expected"). */
+  /* Actual size of YYARG. */
   int yycount = 0;
+  /* Cumulated lengths of YYARG.  */
+  YYPTRDIFF_T yysize = 0;
 
   /* There are many possibilities here to consider:
      - If this state is a consistent state with a default action, then
@@ -1928,7 +2081,9 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
   */
   if (yytoken != YYEMPTY)
     {
-      int yyn = yypact[*yyssp];
+      int yyn = yypact[+*yyssp];
+      YYPTRDIFF_T yysize0 = yytnamerr (YY_NULLPTR, yytname[yytoken]);
+      yysize = yysize0;
       yyarg[yycount++] = yytname[yytoken];
       if (!yypact_value_is_default (yyn))
         {
@@ -1953,11 +2108,12 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                   }
                 yyarg[yycount++] = yytname[yyx];
                 {
-                  YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULLPTR, yytname[yyx]);
-                  if (! (yysize <= yysize1
-                         && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+                  YYPTRDIFF_T yysize1
+                    = yysize + yytnamerr (YY_NULLPTR, yytname[yyx]);
+                  if (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM)
+                    yysize = yysize1;
+                  else
                     return 2;
-                  yysize = yysize1;
                 }
               }
         }
@@ -1969,6 +2125,7 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
       case N:                               \
         yyformat = S;                       \
       break
+    default: /* Avoid compiler warnings. */
       YYCASE_(0, YY_("syntax error"));
       YYCASE_(1, YY_("syntax error, unexpected %s"));
       YYCASE_(2, YY_("syntax error, unexpected %s, expecting %s"));
@@ -1979,10 +2136,13 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
     }
 
   {
-    YYSIZE_T yysize1 = yysize + yystrlen (yyformat);
-    if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+    /* Don't count the "%s"s in the final size, but reserve room for
+       the terminator.  */
+    YYPTRDIFF_T yysize1 = yysize + (yystrlen (yyformat) - 2 * yycount) + 1;
+    if (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM)
+      yysize = yysize1;
+    else
       return 2;
-    yysize = yysize1;
   }
 
   if (*yymsg_alloc < yysize)
@@ -2008,8 +2168,8 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
         }
       else
         {
-          yyp++;
-          yyformat++;
+          ++yyp;
+          ++yyformat;
         }
   }
   return 0;
@@ -2021,9 +2181,10 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 `-----------------------------------------------*/
 
 static void
-yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep)
+yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, YYLTYPE *yylocationp)
 {
   YYUSE (yyvaluep);
+  YYUSE (yylocationp);
   if (!yymsg)
     yymsg = "Deleting";
   YY_SYMBOL_PRINT (yymsg, yytype, yyvaluep, yylocationp);
@@ -2041,6 +2202,12 @@ int yychar;
 
 /* The semantic value of the lookahead symbol.  */
 YYSTYPE yylval;
+/* Location data for the lookahead symbol.  */
+YYLTYPE yylloc
+# if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+  = { 1, 1, 1, 1 }
+# endif
+;
 /* Number of syntax errors so far.  */
 int yynerrs;
 
@@ -2052,28 +2219,37 @@ int yynerrs;
 int
 yyparse (void)
 {
-    int yystate;
+    yy_state_fast_t yystate;
     /* Number of tokens to shift before error messages enabled.  */
     int yyerrstatus;
 
     /* The stacks and their tools:
        'yyss': related to states.
        'yyvs': related to semantic values.
+       'yyls': related to locations.
 
        Refer to the stacks through separate pointers, to allow yyoverflow
        to reallocate them elsewhere.  */
 
     /* The state stack.  */
-    yytype_int16 yyssa[YYINITDEPTH];
-    yytype_int16 *yyss;
-    yytype_int16 *yyssp;
+    yy_state_t yyssa[YYINITDEPTH];
+    yy_state_t *yyss;
+    yy_state_t *yyssp;
 
     /* The semantic value stack.  */
     YYSTYPE yyvsa[YYINITDEPTH];
     YYSTYPE *yyvs;
     YYSTYPE *yyvsp;
 
-    YYSIZE_T yystacksize;
+    /* The location stack.  */
+    YYLTYPE yylsa[YYINITDEPTH];
+    YYLTYPE *yyls;
+    YYLTYPE *yylsp;
+
+    /* The locations where the error started and ended.  */
+    YYLTYPE yyerror_range[3];
+
+    YYPTRDIFF_T yystacksize;
 
   int yyn;
   int yyresult;
@@ -2082,15 +2258,16 @@ yyparse (void)
   /* The variables used to return semantic value and location from the
      action routines.  */
   YYSTYPE yyval;
+  YYLTYPE yyloc;
 
 #if YYERROR_VERBOSE
   /* Buffer for error messages, and its allocated size.  */
   char yymsgbuf[128];
   char *yymsg = yymsgbuf;
-  YYSIZE_T yymsg_alloc = sizeof yymsgbuf;
+  YYPTRDIFF_T yymsg_alloc = sizeof yymsgbuf;
 #endif
 
-#define YYPOPSTACK(N)   (yyvsp -= (N), yyssp -= (N))
+#define YYPOPSTACK(N)   (yyvsp -= (N), yyssp -= (N), yylsp -= (N))
 
   /* The number of symbols on the RHS of the reduced rule.
      Keep to zero when no symbol should be popped.  */
@@ -2098,6 +2275,7 @@ yyparse (void)
 
   yyssp = yyss = yyssa;
   yyvsp = yyvs = yyvsa;
+  yylsp = yyls = yylsa;
   yystacksize = YYINITDEPTH;
 
   YYDPRINTF ((stderr, "Starting parse\n"));
@@ -2106,48 +2284,60 @@ yyparse (void)
   yyerrstatus = 0;
   yynerrs = 0;
   yychar = YYEMPTY; /* Cause a token to be read.  */
+  yylsp[0] = yylloc;
   goto yysetstate;
 
+
 /*------------------------------------------------------------.
-| yynewstate -- Push a new state, which is found in yystate.  |
+| yynewstate -- push a new state, which is found in yystate.  |
 `------------------------------------------------------------*/
- yynewstate:
+yynewstate:
   /* In all cases, when you get here, the value and location stacks
      have just been pushed.  So pushing a state here evens the stacks.  */
   yyssp++;
 
- yysetstate:
-  *yyssp = yystate;
+
+/*--------------------------------------------------------------------.
+| yysetstate -- set current state (the top of the stack) to yystate.  |
+`--------------------------------------------------------------------*/
+yysetstate:
+  YYDPRINTF ((stderr, "Entering state %d\n", yystate));
+  YY_ASSERT (0 <= yystate && yystate < YYNSTATES);
+  YY_IGNORE_USELESS_CAST_BEGIN
+  *yyssp = YY_CAST (yy_state_t, yystate);
+  YY_IGNORE_USELESS_CAST_END
 
   if (yyss + yystacksize - 1 <= yyssp)
+#if !defined yyoverflow && !defined YYSTACK_RELOCATE
+    goto yyexhaustedlab;
+#else
     {
       /* Get the current used size of the three stacks, in elements.  */
-      YYSIZE_T yysize = yyssp - yyss + 1;
+      YYPTRDIFF_T yysize = yyssp - yyss + 1;
 
-#ifdef yyoverflow
+# if defined yyoverflow
       {
         /* Give user a chance to reallocate the stack.  Use copies of
            these so that the &'s don't force the real ones into
            memory.  */
+        yy_state_t *yyss1 = yyss;
         YYSTYPE *yyvs1 = yyvs;
-        yytype_int16 *yyss1 = yyss;
+        YYLTYPE *yyls1 = yyls;
 
         /* Each stack pointer address is followed by the size of the
            data in use in that stack, in bytes.  This used to be a
            conditional around just the two extra args, but that might
            be undefined if yyoverflow is a macro.  */
         yyoverflow (YY_("memory exhausted"),
-                    &yyss1, yysize * sizeof (*yyssp),
-                    &yyvs1, yysize * sizeof (*yyvsp),
+                    &yyss1, yysize * YYSIZEOF (*yyssp),
+                    &yyvs1, yysize * YYSIZEOF (*yyvsp),
+                    &yyls1, yysize * YYSIZEOF (*yylsp),
                     &yystacksize);
-
         yyss = yyss1;
         yyvs = yyvs1;
+        yyls = yyls1;
       }
-#else /* no yyoverflow */
-# ifndef YYSTACK_RELOCATE
-      goto yyexhaustedlab;
-# else
+# else /* defined YYSTACK_RELOCATE */
       /* Extend the stack our own way.  */
       if (YYMAXDEPTH <= yystacksize)
         goto yyexhaustedlab;
@@ -2156,42 +2346,45 @@ yyparse (void)
         yystacksize = YYMAXDEPTH;
 
       {
-        yytype_int16 *yyss1 = yyss;
+        yy_state_t *yyss1 = yyss;
         union yyalloc *yyptr =
-          (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
+          YY_CAST (union yyalloc *,
+                   YYSTACK_ALLOC (YY_CAST (YYSIZE_T, YYSTACK_BYTES (yystacksize))));
         if (! yyptr)
           goto yyexhaustedlab;
         YYSTACK_RELOCATE (yyss_alloc, yyss);
         YYSTACK_RELOCATE (yyvs_alloc, yyvs);
-#  undef YYSTACK_RELOCATE
+        YYSTACK_RELOCATE (yyls_alloc, yyls);
+# undef YYSTACK_RELOCATE
         if (yyss1 != yyssa)
           YYSTACK_FREE (yyss1);
       }
 # endif
-#endif /* no yyoverflow */
 
       yyssp = yyss + yysize - 1;
       yyvsp = yyvs + yysize - 1;
+      yylsp = yyls + yysize - 1;
 
-      YYDPRINTF ((stderr, "Stack size increased to %lu\n",
-                  (unsigned long int) yystacksize));
+      YY_IGNORE_USELESS_CAST_BEGIN
+      YYDPRINTF ((stderr, "Stack size increased to %ld\n",
+                  YY_CAST (long, yystacksize)));
+      YY_IGNORE_USELESS_CAST_END
 
       if (yyss + yystacksize - 1 <= yyssp)
         YYABORT;
     }
-
-  YYDPRINTF ((stderr, "Entering state %d\n", yystate));
+#endif /* !defined yyoverflow && !defined YYSTACK_RELOCATE */
 
   if (yystate == YYFINAL)
     YYACCEPT;
 
   goto yybackup;
 
+
 /*-----------.
 | yybackup.  |
 `-----------*/
 yybackup:
-
   /* Do appropriate processing given the current state.  Read a
      lookahead token if we need one and don't already have one.  */
 
@@ -2241,15 +2434,14 @@ yybackup:
 
   /* Shift the lookahead token.  */
   YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
-
-  /* Discard the shifted token.  */
-  yychar = YYEMPTY;
-
   yystate = yyn;
   YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   *++yyvsp = yylval;
   YY_IGNORE_MAYBE_UNINITIALIZED_END
+  *++yylsp = yylloc;
 
+  /* Discard the shifted token.  */
+  yychar = YYEMPTY;
   goto yynewstate;
 
 
@@ -2264,7 +2456,7 @@ yydefault:
 
 
 /*-----------------------------.
-| yyreduce -- Do a reduction.  |
+| yyreduce -- do a reduction.  |
 `-----------------------------*/
 yyreduce:
   /* yyn is the number of a rule to reduce with.  */
@@ -2280,1882 +2472,1885 @@ yyreduce:
      GCC warning that YYVAL may be used uninitialized.  */
   yyval = yyvsp[1-yylen];
 
-
+  /* Default location. */
+  YYLLOC_DEFAULT (yyloc, (yylsp - yylen), yylen);
+  yyerror_range[1] = yyloc;
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 19:
-#line 175 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->resetConstructors(); }
-#line 2276 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+  case 19:
+#line 178 "slghparse.y"
+                                       { slgh->resetConstructors(); }
+#line 2485 "slghparse.cc"
     break;
 
   case 20:
-#line 177 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->setEndian(1); }
-#line 2282 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 180 "slghparse.y"
+                                                 { slgh->setEndian(1); }
+#line 2491 "slghparse.cc"
     break;
 
   case 21:
-#line 178 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->setEndian(0); }
-#line 2288 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 181 "slghparse.y"
+                                             { slgh->setEndian(0); }
+#line 2497 "slghparse.cc"
     break;
 
   case 22:
-#line 180 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->setAlignment(*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
-#line 2294 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 183 "slghparse.y"
+                                               { slgh->setAlignment(*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
+#line 2503 "slghparse.cc"
     break;
 
   case 23:
-#line 182 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    {}
-#line 2300 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 185 "slghparse.y"
+                                       {}
+#line 2509 "slghparse.cc"
     break;
 
   case 24:
-#line 184 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tokensym) = slgh->defineToken((yyvsp[-3].str),(yyvsp[-1].i),0); }
-#line 2306 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 187 "slghparse.y"
+                                                       { (yyval.tokensym) = slgh->defineToken((yyvsp[-3].str),(yyvsp[-1].i),0); }
+#line 2515 "slghparse.cc"
     break;
 
   case 25:
-#line 185 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tokensym) = slgh->defineToken((yyvsp[-6].str),(yyvsp[-4].i),-1); }
-#line 2312 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 188 "slghparse.y"
+                                                                          { (yyval.tokensym) = slgh->defineToken((yyvsp[-6].str),(yyvsp[-4].i),-1); }
+#line 2521 "slghparse.cc"
     break;
 
   case 26:
-#line 186 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tokensym) = slgh->defineToken((yyvsp[-6].str),(yyvsp[-4].i),1); }
-#line 2318 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 189 "slghparse.y"
+                                                                       { (yyval.tokensym) = slgh->defineToken((yyvsp[-6].str),(yyvsp[-4].i),1); }
+#line 2527 "slghparse.cc"
     break;
 
   case 27:
-#line 187 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tokensym) = (yyvsp[-1].tokensym); slgh->addTokenField((yyvsp[-1].tokensym),(yyvsp[0].fieldqual)); }
-#line 2324 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 190 "slghparse.y"
+                                       { (yyval.tokensym) = (yyvsp[-1].tokensym); slgh->addTokenField((yyvsp[-1].tokensym),(yyvsp[0].fieldqual)); }
+#line 2533 "slghparse.cc"
     break;
 
   case 28:
-#line 188 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg=(yyvsp[0].anysym)->getName()+": redefined as a token"; yyerror(errmsg.c_str()); YYERROR; }
-#line 2330 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 191 "slghparse.y"
+                                       { string errmsg=(yyvsp[0].anysym)->getName()+": redefined as a token"; yyerror(errmsg.c_str()); YYERROR; }
+#line 2539 "slghparse.cc"
     break;
 
   case 29:
-#line 190 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    {}
-#line 2336 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 193 "slghparse.y"
+                                       {}
+#line 2545 "slghparse.cc"
     break;
 
   case 30:
-#line 192 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varsym) = (yyvsp[0].varsym); }
-#line 2342 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 195 "slghparse.y"
+                                           { (yyval.varsym) = (yyvsp[0].varsym); }
+#line 2551 "slghparse.cc"
     break;
 
   case 31:
-#line 193 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varsym) = (yyvsp[-1].varsym); if (!slgh->addContextField( (yyvsp[-1].varsym), (yyvsp[0].fieldqual) ))
+#line 196 "slghparse.y"
+                                         { (yyval.varsym) = (yyvsp[-1].varsym); if (!slgh->addContextField( (yyvsp[-1].varsym), (yyvsp[0].fieldqual) ))
                                             { yyerror("All context definitions must come before constructors"); YYERROR; } }
-#line 2349 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 2558 "slghparse.cc"
     break;
 
   case 32:
-#line 196 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = new FieldQuality((yyvsp[-6].str),(yyvsp[-3].i),(yyvsp[-1].i)); }
-#line 2355 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 199 "slghparse.y"
+                                                 { (yyval.fieldqual) = new FieldQuality((yyvsp[-6].str),(yyvsp[-3].i),(yyvsp[-1].i)); }
+#line 2564 "slghparse.cc"
     break;
 
   case 33:
-#line 197 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { delete (yyvsp[-3].i); delete (yyvsp[-1].i); string errmsg = (yyvsp[-6].anysym)->getName()+": redefined as field"; yyerror(errmsg.c_str()); YYERROR; }
-#line 2361 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 200 "slghparse.y"
+                                              { delete (yyvsp[-3].i); delete (yyvsp[-1].i); string errmsg = (yyvsp[-6].anysym)->getName()+": redefined as field"; yyerror(errmsg.c_str()); YYERROR; }
+#line 2570 "slghparse.cc"
     break;
 
   case 34:
-#line 198 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->signext = true; }
-#line 2367 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 201 "slghparse.y"
+                                        { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->signext = true; }
+#line 2576 "slghparse.cc"
     break;
 
   case 35:
-#line 199 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = true; }
-#line 2373 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 202 "slghparse.y"
+                                        { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = true; }
+#line 2582 "slghparse.cc"
     break;
 
   case 36:
-#line 200 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = false; }
-#line 2379 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 203 "slghparse.y"
+                                        { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = false; }
+#line 2588 "slghparse.cc"
     break;
 
   case 37:
-#line 202 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = new FieldQuality((yyvsp[-6].str),(yyvsp[-3].i),(yyvsp[-1].i)); }
-#line 2385 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 205 "slghparse.y"
+                                                        { (yyval.fieldqual) = new FieldQuality((yyvsp[-6].str),(yyvsp[-3].i),(yyvsp[-1].i)); }
+#line 2594 "slghparse.cc"
     break;
 
   case 38:
-#line 203 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { delete (yyvsp[-3].i); delete (yyvsp[-1].i); string errmsg = (yyvsp[-6].anysym)->getName()+": redefined as field"; yyerror(errmsg.c_str()); YYERROR; }
-#line 2391 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 206 "slghparse.y"
+                                              { delete (yyvsp[-3].i); delete (yyvsp[-1].i); string errmsg = (yyvsp[-6].anysym)->getName()+": redefined as field"; yyerror(errmsg.c_str()); YYERROR; }
+#line 2600 "slghparse.cc"
     break;
 
   case 39:
-#line 204 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->signext = true; }
-#line 2397 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 207 "slghparse.y"
+                                                { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->signext = true; }
+#line 2606 "slghparse.cc"
     break;
 
   case 40:
-#line 205 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->flow = false; }
-#line 2403 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 208 "slghparse.y"
+                                                { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->flow = false; }
+#line 2612 "slghparse.cc"
     break;
 
   case 41:
-#line 206 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = true; }
-#line 2409 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 209 "slghparse.y"
+                                                { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = true; }
+#line 2618 "slghparse.cc"
     break;
 
   case 42:
-#line 207 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = false; }
-#line 2415 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 210 "slghparse.y"
+                                                { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = false; }
+#line 2624 "slghparse.cc"
     break;
 
   case 43:
-#line 209 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->newSpace((yyvsp[-1].spacequal)); }
-#line 2421 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 212 "slghparse.y"
+                                        { slgh->newSpace((yyvsp[-1].spacequal)); }
+#line 2630 "slghparse.cc"
     break;
 
   case 44:
-#line 211 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.spacequal) = new SpaceQuality(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2427 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 214 "slghparse.y"
+                                        { (yyval.spacequal) = new SpaceQuality(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 2636 "slghparse.cc"
     break;
 
   case 45:
-#line 212 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = (yyvsp[0].anysym)->getName()+": redefined as space"; yyerror(errmsg.c_str()); YYERROR; }
-#line 2433 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 215 "slghparse.y"
+                                        { string errmsg = (yyvsp[0].anysym)->getName()+": redefined as space"; yyerror(errmsg.c_str()); YYERROR; }
+#line 2642 "slghparse.cc"
     break;
 
   case 46:
-#line 213 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->type = SpaceQuality::ramtype; }
-#line 2439 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 216 "slghparse.y"
+                                        { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->type = SpaceQuality::ramtype; }
+#line 2648 "slghparse.cc"
     break;
 
   case 47:
-#line 214 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->type = SpaceQuality::registertype; }
-#line 2445 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 217 "slghparse.y"
+                                        { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->type = SpaceQuality::registertype; }
+#line 2654 "slghparse.cc"
     break;
 
   case 48:
-#line 215 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->size = *(yyvsp[0].i); delete (yyvsp[0].i); }
-#line 2451 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 218 "slghparse.y"
+                                        { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->size = *(yyvsp[0].i); delete (yyvsp[0].i); }
+#line 2660 "slghparse.cc"
     break;
 
   case 49:
-#line 216 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->wordsize = *(yyvsp[0].i); delete (yyvsp[0].i); }
-#line 2457 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 219 "slghparse.y"
+                                        { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->wordsize = *(yyvsp[0].i); delete (yyvsp[0].i); }
+#line 2666 "slghparse.cc"
     break;
 
   case 50:
-#line 217 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.spacequal) = (yyvsp[-1].spacequal); (yyval.spacequal)->isdefault = true; }
-#line 2463 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 220 "slghparse.y"
+                                        { (yyval.spacequal) = (yyvsp[-1].spacequal); (yyval.spacequal)->isdefault = true; }
+#line 2672 "slghparse.cc"
     break;
 
   case 51:
-#line 219 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    {
+#line 222 "slghparse.y"
+                                                                                           {
                slgh->defineVarnodes((yyvsp[-8].spacesym),(yyvsp[-5].i),(yyvsp[-2].i),(yyvsp[-1].strlist)); }
-#line 2470 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 2679 "slghparse.cc"
     break;
 
   case 52:
-#line 221 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { yyerror("Parsed integer is too big (overflow)"); YYERROR; }
-#line 2476 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 224 "slghparse.y"
+                                                  { yyerror("Parsed integer is too big (overflow)"); YYERROR; }
+#line 2685 "slghparse.cc"
     break;
 
   case 56:
-#line 228 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    {
+#line 231 "slghparse.y"
+                                                              {
                slgh->defineBitrange((yyvsp[-7].str),(yyvsp[-5].varsym),(uint4)*(yyvsp[-3].i),(uint4)*(yyvsp[-1].i)); delete (yyvsp[-3].i); delete (yyvsp[-1].i); }
-#line 2483 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 2692 "slghparse.cc"
     break;
 
   case 57:
-#line 231 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->addUserOp((yyvsp[-1].strlist)); }
-#line 2489 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 234 "slghparse.y"
+                                                  { slgh->addUserOp((yyvsp[-1].strlist)); }
+#line 2698 "slghparse.cc"
     break;
 
   case 58:
-#line 233 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->attachValues((yyvsp[-2].symlist),(yyvsp[-1].biglist)); }
-#line 2495 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 236 "slghparse.y"
+                                                          { slgh->attachValues((yyvsp[-2].symlist),(yyvsp[-1].biglist)); }
+#line 2704 "slghparse.cc"
     break;
 
   case 59:
-#line 235 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->attachNames((yyvsp[-2].symlist),(yyvsp[-1].strlist)); }
-#line 2501 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 238 "slghparse.y"
+                                                             { slgh->attachNames((yyvsp[-2].symlist),(yyvsp[-1].strlist)); }
+#line 2710 "slghparse.cc"
     break;
 
   case 60:
-#line 237 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->attachVarnodes((yyvsp[-2].symlist),(yyvsp[-1].symlist)); }
-#line 2507 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 240 "slghparse.y"
+                                                          { slgh->attachVarnodes((yyvsp[-2].symlist),(yyvsp[-1].symlist)); }
+#line 2716 "slghparse.cc"
     break;
 
   case 61:
-#line 239 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->buildMacro((yyvsp[-3].macrosym),(yyvsp[-1].sem)); }
-#line 2513 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 242 "slghparse.y"
+                                        { slgh->buildMacro((yyvsp[-3].macrosym),(yyvsp[-1].sem)); }
+#line 2722 "slghparse.cc"
     break;
 
   case 62:
-#line 242 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    {  slgh->pushWith((yyvsp[-4].subtablesym),(yyvsp[-2].pateq),(yyvsp[-1].contop)); }
-#line 2519 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 245 "slghparse.y"
+                                                                       {  slgh->pushWith((yyvsp[-4].subtablesym),(yyvsp[-2].pateq),(yyvsp[-1].contop)); }
+#line 2728 "slghparse.cc"
     break;
 
   case 66:
-#line 248 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->popWith(); }
-#line 2525 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 251 "slghparse.y"
+                             { slgh->popWith(); }
+#line 2734 "slghparse.cc"
     break;
 
   case 67:
-#line 250 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.subtablesym) = (SubtableSymbol *)0; }
-#line 2531 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 253 "slghparse.y"
+                        { (yyval.subtablesym) = (SubtableSymbol *)0; }
+#line 2740 "slghparse.cc"
     break;
 
   case 68:
-#line 251 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.subtablesym) = (yyvsp[0].subtablesym); }
-#line 2537 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 254 "slghparse.y"
+                        { (yyval.subtablesym) = (yyvsp[0].subtablesym); }
+#line 2746 "slghparse.cc"
     break;
 
   case 69:
-#line 252 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.subtablesym) = slgh->newTable((yyvsp[0].str)); }
-#line 2543 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 255 "slghparse.y"
+                        { (yyval.subtablesym) = slgh->newTable((yyvsp[0].str)); }
+#line 2752 "slghparse.cc"
     break;
 
   case 70:
-#line 255 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = (PatternEquation *)0; }
-#line 2549 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 258 "slghparse.y"
+                           { (yyval.pateq) = (PatternEquation *)0; }
+#line 2758 "slghparse.cc"
     break;
 
   case 71:
-#line 256 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = (yyvsp[0].pateq); }
-#line 2555 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 259 "slghparse.y"
+                           { (yyval.pateq) = (yyvsp[0].pateq); }
+#line 2764 "slghparse.cc"
     break;
 
   case 72:
-#line 259 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.macrosym) = slgh->createMacro((yyvsp[-3].str),(yyvsp[-1].strlist)); }
-#line 2561 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 262 "slghparse.y"
+                                            { (yyval.macrosym) = slgh->createMacro((yyvsp[-3].str),(yyvsp[-1].strlist)); }
+#line 2770 "slghparse.cc"
     break;
 
   case 73:
-#line 261 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sectionstart) = slgh->standaloneSection((yyvsp[-1].sem)); }
-#line 2567 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 264 "slghparse.y"
+                     { (yyval.sectionstart) = slgh->standaloneSection((yyvsp[-1].sem)); }
+#line 2776 "slghparse.cc"
     break;
 
   case 74:
-#line 262 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sectionstart) = slgh->finalNamedSection((yyvsp[-2].sectionstart),(yyvsp[-1].sem)); }
-#line 2573 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 265 "slghparse.y"
+                               { (yyval.sectionstart) = slgh->finalNamedSection((yyvsp[-2].sectionstart),(yyvsp[-1].sem)); }
+#line 2782 "slghparse.cc"
     break;
 
   case 75:
-#line 263 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sectionstart) = (SectionVector *)0; }
-#line 2579 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 266 "slghparse.y"
+                     { (yyval.sectionstart) = (SectionVector *)0; }
+#line 2788 "slghparse.cc"
     break;
 
   case 76:
-#line 265 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->buildConstructor((yyvsp[-4].construct),(yyvsp[-2].pateq),(yyvsp[-1].contop),(yyvsp[0].sectionstart)); }
-#line 2585 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 268 "slghparse.y"
+                                                                  { slgh->buildConstructor((yyvsp[-4].construct),(yyvsp[-2].pateq),(yyvsp[-1].contop),(yyvsp[0].sectionstart)); }
+#line 2794 "slghparse.cc"
     break;
 
   case 77:
-#line 266 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { slgh->buildConstructor((yyvsp[-4].construct),(yyvsp[-2].pateq),(yyvsp[-1].contop),(yyvsp[0].sectionstart)); }
-#line 2591 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 269 "slghparse.y"
+                                                                  { slgh->buildConstructor((yyvsp[-4].construct),(yyvsp[-2].pateq),(yyvsp[-1].contop),(yyvsp[0].sectionstart)); }
+#line 2800 "slghparse.cc"
     break;
 
   case 78:
-#line 268 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2597 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 271 "slghparse.y"
+                                        { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 2806 "slghparse.cc"
     break;
 
   case 79:
-#line 269 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2603 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 272 "slghparse.y"
+                                        { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 2812 "slghparse.cc"
     break;
 
   case 80:
-#line 270 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); if (slgh->isInRoot((yyvsp[-1].construct))) { (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); } else slgh->newOperand((yyvsp[-1].construct),(yyvsp[0].str)); }
-#line 2609 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 273 "slghparse.y"
+                                        { (yyval.construct) = (yyvsp[-1].construct); if (slgh->isInRoot((yyvsp[-1].construct))) { (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); } else slgh->newOperand((yyvsp[-1].construct),(yyvsp[0].str)); }
+#line 2818 "slghparse.cc"
     break;
 
   case 81:
-#line 271 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); if (!slgh->isInRoot((yyvsp[-1].construct))) { yyerror("Unexpected '^' at start of print pieces");  YYERROR; } }
-#line 2615 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 274 "slghparse.y"
+                                                { (yyval.construct) = (yyvsp[-1].construct); if (!slgh->isInRoot((yyvsp[-1].construct))) { yyerror("Unexpected '^' at start of print pieces");  YYERROR; } }
+#line 2824 "slghparse.cc"
     break;
 
   case 82:
-#line 272 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); }
-#line 2621 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 275 "slghparse.y"
+                                                { (yyval.construct) = (yyvsp[-1].construct); }
+#line 2830 "slghparse.cc"
     break;
 
   case 83:
-#line 273 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2627 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 276 "slghparse.y"
+                                                { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 2836 "slghparse.cc"
     break;
 
   case 84:
-#line 274 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2633 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 277 "slghparse.y"
+                                        { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 2842 "slghparse.cc"
     break;
 
   case 85:
-#line 275 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(string(" ")); }
-#line 2639 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 278 "slghparse.y"
+                                                { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(string(" ")); }
+#line 2848 "slghparse.cc"
     break;
 
   case 86:
-#line 276 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); slgh->newOperand((yyvsp[-1].construct),(yyvsp[0].str)); }
-#line 2645 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 279 "slghparse.y"
+                                        { (yyval.construct) = (yyvsp[-1].construct); slgh->newOperand((yyvsp[-1].construct),(yyvsp[0].str)); }
+#line 2854 "slghparse.cc"
     break;
 
   case 87:
-#line 278 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = slgh->createConstructor((yyvsp[-1].subtablesym)); }
-#line 2651 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 281 "slghparse.y"
+                                { (yyval.construct) = slgh->createConstructor((yyvsp[-1].subtablesym)); }
+#line 2860 "slghparse.cc"
     break;
 
   case 88:
-#line 279 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { SubtableSymbol *sym=slgh->newTable((yyvsp[-1].str)); (yyval.construct) = slgh->createConstructor(sym); }
-#line 2657 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 282 "slghparse.y"
+                                                { SubtableSymbol *sym=slgh->newTable((yyvsp[-1].str)); (yyval.construct) = slgh->createConstructor(sym); }
+#line 2866 "slghparse.cc"
     break;
 
   case 89:
-#line 280 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = slgh->createConstructor((SubtableSymbol *)0); }
-#line 2663 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 283 "slghparse.y"
+                                                        { (yyval.construct) = slgh->createConstructor((SubtableSymbol *)0); }
+#line 2872 "slghparse.cc"
     break;
 
   case 90:
-#line 281 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.construct) = (yyvsp[-1].construct); }
-#line 2669 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 284 "slghparse.y"
+                                        { (yyval.construct) = (yyvsp[-1].construct); }
+#line 2878 "slghparse.cc"
     break;
 
   case 91:
-#line 283 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new ConstantValue(*(yyvsp[0].big)); delete (yyvsp[0].big); }
-#line 2675 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 286 "slghparse.y"
+                                        { (yyval.patexp) = new ConstantValue(*(yyvsp[0].big)); delete (yyvsp[0].big); }
+#line 2884 "slghparse.cc"
     break;
 
   case 92:
-#line 285 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { if ((actionon==1)&&((yyvsp[0].famsym)->getType() != SleighSymbol::context_symbol))
+#line 288 "slghparse.y"
+                                        { if ((actionon==1)&&((yyvsp[0].famsym)->getType() != SleighSymbol::context_symbol))
                                              { string errmsg="Global symbol "+(yyvsp[0].famsym)->getName(); errmsg += " is not allowed in action expression"; yyerror(errmsg.c_str()); } (yyval.patexp) = (yyvsp[0].famsym)->getPatternValue(); }
-#line 2682 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 2891 "slghparse.cc"
     break;
 
   case 93:
-#line 288 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = (yyvsp[0].specsym)->getPatternExpression(); }
-#line 2688 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 291 "slghparse.y"
+                                        { (yyval.patexp) = (yyvsp[0].specsym)->getPatternExpression(); }
+#line 2897 "slghparse.cc"
     break;
 
   case 94:
-#line 289 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = (yyvsp[-1].patexp); }
-#line 2694 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 292 "slghparse.y"
+                                        { (yyval.patexp) = (yyvsp[-1].patexp); }
+#line 2903 "slghparse.cc"
     break;
 
   case 95:
-#line 290 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new PlusExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2700 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 293 "slghparse.y"
+                                        { (yyval.patexp) = new PlusExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2909 "slghparse.cc"
     break;
 
   case 96:
-#line 291 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new SubExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2706 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 294 "slghparse.y"
+                                        { (yyval.patexp) = new SubExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2915 "slghparse.cc"
     break;
 
   case 97:
-#line 292 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new MultExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2712 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 295 "slghparse.y"
+                                        { (yyval.patexp) = new MultExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2921 "slghparse.cc"
     break;
 
   case 98:
-#line 293 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new LeftShiftExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2718 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 296 "slghparse.y"
+                                        { (yyval.patexp) = new LeftShiftExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2927 "slghparse.cc"
     break;
 
   case 99:
-#line 294 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new RightShiftExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2724 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 297 "slghparse.y"
+                                        { (yyval.patexp) = new RightShiftExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2933 "slghparse.cc"
     break;
 
   case 100:
-#line 295 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new AndExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2730 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 298 "slghparse.y"
+                                        { (yyval.patexp) = new AndExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2939 "slghparse.cc"
     break;
 
   case 101:
-#line 296 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new OrExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2736 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 299 "slghparse.y"
+                                        { (yyval.patexp) = new OrExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2945 "slghparse.cc"
     break;
 
   case 102:
-#line 297 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new XorExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2742 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 300 "slghparse.y"
+                                        { (yyval.patexp) = new XorExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2951 "slghparse.cc"
     break;
 
   case 103:
-#line 298 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new DivExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2748 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 301 "slghparse.y"
+                                        { (yyval.patexp) = new DivExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
+#line 2957 "slghparse.cc"
     break;
 
   case 104:
-#line 299 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new MinusExpression((yyvsp[0].patexp)); }
-#line 2754 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 302 "slghparse.y"
+                                        { (yyval.patexp) = new MinusExpression((yyvsp[0].patexp)); }
+#line 2963 "slghparse.cc"
     break;
 
   case 105:
-#line 300 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.patexp) = new NotExpression((yyvsp[0].patexp)); }
-#line 2760 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 303 "slghparse.y"
+                                        { (yyval.patexp) = new NotExpression((yyvsp[0].patexp)); }
+#line 2969 "slghparse.cc"
     break;
 
   case 107:
-#line 303 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new EquationAnd((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
-#line 2766 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 306 "slghparse.y"
+                                        { (yyval.pateq) = new EquationAnd((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
+#line 2975 "slghparse.cc"
     break;
 
   case 108:
-#line 304 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new EquationOr((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
-#line 2772 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 307 "slghparse.y"
+                                        { (yyval.pateq) = new EquationOr((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
+#line 2981 "slghparse.cc"
     break;
 
   case 109:
-#line 305 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new EquationCat((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
-#line 2778 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 308 "slghparse.y"
+                                        { (yyval.pateq) = new EquationCat((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
+#line 2987 "slghparse.cc"
     break;
 
   case 110:
-#line 307 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new EquationLeftEllipsis((yyvsp[0].pateq)); }
-#line 2784 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 310 "slghparse.y"
+                                        { (yyval.pateq) = new EquationLeftEllipsis((yyvsp[0].pateq)); }
+#line 2993 "slghparse.cc"
     break;
 
   case 112:
-#line 310 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new EquationRightEllipsis((yyvsp[-1].pateq)); }
-#line 2790 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 313 "slghparse.y"
+                                        { (yyval.pateq) = new EquationRightEllipsis((yyvsp[-1].pateq)); }
+#line 2999 "slghparse.cc"
     break;
 
   case 115:
-#line 314 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = (yyvsp[-1].pateq); }
-#line 2796 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 317 "slghparse.y"
+                                        { (yyval.pateq) = (yyvsp[-1].pateq); }
+#line 3005 "slghparse.cc"
     break;
 
   case 116:
-#line 316 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new EqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2802 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 319 "slghparse.y"
+                                         { (yyval.pateq) = new EqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
+#line 3011 "slghparse.cc"
     break;
 
   case 117:
-#line 317 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new NotEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2808 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 320 "slghparse.y"
+                                         { (yyval.pateq) = new NotEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
+#line 3017 "slghparse.cc"
     break;
 
   case 118:
-#line 318 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new LessEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2814 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 321 "slghparse.y"
+                                        { (yyval.pateq) = new LessEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
+#line 3023 "slghparse.cc"
     break;
 
   case 119:
-#line 319 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new LessEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2820 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 322 "slghparse.y"
+                                          { (yyval.pateq) = new LessEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
+#line 3029 "slghparse.cc"
     break;
 
   case 120:
-#line 320 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new GreaterEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2826 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 323 "slghparse.y"
+                                        { (yyval.pateq) = new GreaterEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
+#line 3035 "slghparse.cc"
     break;
 
   case 121:
-#line 321 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new GreaterEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2832 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 324 "slghparse.y"
+                                           { (yyval.pateq) = new GreaterEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
+#line 3041 "slghparse.cc"
     break;
 
   case 122:
-#line 322 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = slgh->constrainOperand((yyvsp[-2].operandsym),(yyvsp[0].patexp)); 
+#line 325 "slghparse.y"
+                                        { (yyval.pateq) = slgh->constrainOperand((yyvsp[-2].operandsym),(yyvsp[0].patexp)); 
                                           if ((yyval.pateq) == (PatternEquation *)0) 
                                             { string errmsg="Constraining currently undefined operand "+(yyvsp[-2].operandsym)->getName(); yyerror(errmsg.c_str()); } }
-#line 2840 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 3049 "slghparse.cc"
     break;
 
   case 123:
-#line 325 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new OperandEquation((yyvsp[0].operandsym)->getIndex()); slgh->selfDefine((yyvsp[0].operandsym)); }
-#line 2846 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 328 "slghparse.y"
+                                        { (yyval.pateq) = new OperandEquation((yyvsp[0].operandsym)->getIndex()); slgh->selfDefine((yyvsp[0].operandsym)); }
+#line 3055 "slghparse.cc"
     break;
 
   case 124:
-#line 326 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = new UnconstrainedEquation((yyvsp[0].specsym)->getPatternExpression()); }
-#line 2852 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 329 "slghparse.y"
+                                        { (yyval.pateq) = new UnconstrainedEquation((yyvsp[0].specsym)->getPatternExpression()); }
+#line 3061 "slghparse.cc"
     break;
 
   case 125:
-#line 327 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = slgh->defineInvisibleOperand((yyvsp[0].famsym)); }
-#line 2858 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 330 "slghparse.y"
+                                        { (yyval.pateq) = slgh->defineInvisibleOperand((yyvsp[0].famsym)); }
+#line 3067 "slghparse.cc"
     break;
 
   case 126:
-#line 328 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.pateq) = slgh->defineInvisibleOperand((yyvsp[0].subtablesym)); }
-#line 2864 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 331 "slghparse.y"
+                                        { (yyval.pateq) = slgh->defineInvisibleOperand((yyvsp[0].subtablesym)); }
+#line 3073 "slghparse.cc"
     break;
 
   case 127:
-#line 330 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.contop) = (vector<ContextChange *> *)0; }
-#line 2870 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 333 "slghparse.y"
+                                        { (yyval.contop) = (vector<ContextChange *> *)0; }
+#line 3079 "slghparse.cc"
     break;
 
   case 128:
-#line 331 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.contop) = (yyvsp[-1].contop); }
-#line 2876 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 334 "slghparse.y"
+                                        { (yyval.contop) = (yyvsp[-1].contop); }
+#line 3085 "slghparse.cc"
     break;
 
   case 129:
-#line 333 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.contop) = new vector<ContextChange *>; }
-#line 2882 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 336 "slghparse.y"
+                                        { (yyval.contop) = new vector<ContextChange *>; }
+#line 3091 "slghparse.cc"
     break;
 
   case 130:
-#line 334 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.contop) = (yyvsp[-4].contop); if (!slgh->contextMod((yyvsp[-4].contop),(yyvsp[-3].contextsym),(yyvsp[-1].patexp))) { string errmsg="Cannot use 'inst_next' to set context variable: "+(yyvsp[-3].contextsym)->getName(); yyerror(errmsg.c_str()); YYERROR; } }
-#line 2888 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 337 "slghparse.y"
+                                                { (yyval.contop) = (yyvsp[-4].contop); if (!slgh->contextMod((yyvsp[-4].contop),(yyvsp[-3].contextsym),(yyvsp[-1].patexp))) { string errmsg="Cannot use 'inst_next' to set context variable: "+(yyvsp[-3].contextsym)->getName(); yyerror(errmsg.c_str()); YYERROR; } }
+#line 3097 "slghparse.cc"
     break;
 
   case 131:
-#line 335 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.contop) = (yyvsp[-7].contop); slgh->contextSet((yyvsp[-7].contop),(yyvsp[-4].famsym),(yyvsp[-2].contextsym)); }
-#line 2894 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 338 "slghparse.y"
+                                                                      { (yyval.contop) = (yyvsp[-7].contop); slgh->contextSet((yyvsp[-7].contop),(yyvsp[-4].famsym),(yyvsp[-2].contextsym)); }
+#line 3103 "slghparse.cc"
     break;
 
   case 132:
-#line 336 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.contop) = (yyvsp[-7].contop); slgh->contextSet((yyvsp[-7].contop),(yyvsp[-4].specsym),(yyvsp[-2].contextsym)); }
-#line 2900 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 339 "slghparse.y"
+                                                                        { (yyval.contop) = (yyvsp[-7].contop); slgh->contextSet((yyvsp[-7].contop),(yyvsp[-4].specsym),(yyvsp[-2].contextsym)); }
+#line 3109 "slghparse.cc"
     break;
 
   case 133:
-#line 337 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.contop) = (yyvsp[-4].contop); slgh->defineOperand((yyvsp[-3].operandsym),(yyvsp[-1].patexp)); }
-#line 2906 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 340 "slghparse.y"
+                                               { (yyval.contop) = (yyvsp[-4].contop); slgh->defineOperand((yyvsp[-3].operandsym),(yyvsp[-1].patexp)); }
+#line 3115 "slghparse.cc"
     break;
 
   case 134:
-#line 338 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg="Expecting context symbol, not "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 2912 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 341 "slghparse.y"
+                                        { string errmsg="Expecting context symbol, not "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 3121 "slghparse.cc"
     break;
 
   case 135:
-#line 340 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sectionsym) = slgh->newSectionSymbol( *(yyvsp[-1].str) ); delete (yyvsp[-1].str); }
-#line 2918 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 343 "slghparse.y"
+                                        { (yyval.sectionsym) = slgh->newSectionSymbol( *(yyvsp[-1].str) ); delete (yyvsp[-1].str); }
+#line 3127 "slghparse.cc"
     break;
 
   case 136:
-#line 341 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sectionsym) = (yyvsp[-1].sectionsym); }
-#line 2924 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 344 "slghparse.y"
+                                        { (yyval.sectionsym) = (yyvsp[-1].sectionsym); }
+#line 3133 "slghparse.cc"
     break;
 
   case 137:
-#line 343 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sectionstart) = slgh->firstNamedSection((yyvsp[-1].sem),(yyvsp[0].sectionsym)); }
-#line 2930 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 346 "slghparse.y"
+                                        { (yyval.sectionstart) = slgh->firstNamedSection((yyvsp[-1].sem),(yyvsp[0].sectionsym)); }
+#line 3139 "slghparse.cc"
     break;
 
   case 138:
-#line 345 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sectionstart) = (yyvsp[0].sectionstart); }
-#line 2936 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 348 "slghparse.y"
+                             { (yyval.sectionstart) = (yyvsp[0].sectionstart); }
+#line 3145 "slghparse.cc"
     break;
 
   case 139:
-#line 346 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sectionstart) = slgh->nextNamedSection((yyvsp[-2].sectionstart),(yyvsp[-1].sem),(yyvsp[0].sectionsym)); }
-#line 2942 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 349 "slghparse.y"
+                                        { (yyval.sectionstart) = slgh->nextNamedSection((yyvsp[-2].sectionstart),(yyvsp[-1].sem),(yyvsp[0].sectionsym)); }
+#line 3151 "slghparse.cc"
     break;
 
   case 140:
-#line 348 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sem) = (yyvsp[0].sem); if ((yyval.sem)->getOpvec().empty() && ((yyval.sem)->getResult() == (HandleTpl *)0)) slgh->recordNop(); }
-#line 2948 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 351 "slghparse.y"
+            { (yyval.sem) = (yyvsp[0].sem); if ((yyval.sem)->getOpvec().empty() && ((yyval.sem)->getResult() == (HandleTpl *)0)) slgh->recordNop(); }
+#line 3157 "slghparse.cc"
     break;
 
   case 141:
-#line 349 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sem) = slgh->setResultVarnode((yyvsp[-3].sem),(yyvsp[-1].varnode)); }
-#line 2954 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 352 "slghparse.y"
+                                        { (yyval.sem) = slgh->setResultVarnode((yyvsp[-3].sem),(yyvsp[-1].varnode)); }
+#line 3163 "slghparse.cc"
     break;
 
   case 142:
-#line 350 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sem) = slgh->setResultStarVarnode((yyvsp[-4].sem),(yyvsp[-2].starqual),(yyvsp[-1].varnode)); }
-#line 2960 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 353 "slghparse.y"
+                                               { (yyval.sem) = slgh->setResultStarVarnode((yyvsp[-4].sem),(yyvsp[-2].starqual),(yyvsp[-1].varnode)); }
+#line 3169 "slghparse.cc"
     break;
 
   case 143:
-#line 351 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg="Unknown export varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 2966 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 354 "slghparse.y"
+                                        { string errmsg="Unknown export varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 3175 "slghparse.cc"
     break;
 
   case 144:
-#line 352 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg="Unknown pointer varnode: "+*(yyvsp[0].str); delete (yyvsp[-1].starqual); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 2972 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 355 "slghparse.y"
+                                        { string errmsg="Unknown pointer varnode: "+*(yyvsp[0].str); delete (yyvsp[-1].starqual); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 3181 "slghparse.cc"
     break;
 
   case 145:
-#line 354 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sem) = new ConstructTpl(); }
-#line 2978 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 357 "slghparse.y"
+                                        { (yyval.sem) = new ConstructTpl(); }
+#line 3187 "slghparse.cc"
     break;
 
   case 146:
-#line 355 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sem) = (yyvsp[-1].sem); if (!(yyval.sem)->addOpList(*(yyvsp[0].stmt))) { delete (yyvsp[0].stmt); yyerror("Multiple delayslot declarations"); YYERROR; } delete (yyvsp[0].stmt); }
-#line 2984 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 358 "slghparse.y"
+                                        { (yyval.sem) = (yyvsp[-1].sem); if (!(yyval.sem)->addOpList(*(yyvsp[0].stmt))) { delete (yyvsp[0].stmt); yyerror("Multiple delayslot declarations"); YYERROR; } delete (yyvsp[0].stmt); }
+#line 3193 "slghparse.cc"
     break;
 
   case 147:
-#line 356 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sem) = (yyvsp[-3].sem); slgh->pcode.newLocalDefinition((yyvsp[-1].str)); }
-#line 2990 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 359 "slghparse.y"
+                                { (yyval.sem) = (yyvsp[-3].sem); slgh->pcode.newLocalDefinition((yyvsp[-1].str)); }
+#line 3199 "slghparse.cc"
     break;
 
   case 148:
-#line 357 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.sem) = (yyvsp[-5].sem); slgh->pcode.newLocalDefinition((yyvsp[-3].str),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
-#line 2996 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 360 "slghparse.y"
+                                            { (yyval.sem) = (yyvsp[-5].sem); slgh->pcode.newLocalDefinition((yyvsp[-3].str),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
+#line 3205 "slghparse.cc"
     break;
 
   case 149:
-#line 359 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyvsp[-1].tree)->setOutput((yyvsp[-3].varnode)); (yyval.stmt) = ExprTree::toVector((yyvsp[-1].tree)); }
-#line 3002 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 362 "slghparse.y"
+                                        { (yyvsp[-1].tree)->setOutput((yyvsp[-3].varnode)); (yyval.stmt) = ExprTree::toVector((yyvsp[-1].tree)); }
+#line 3211 "slghparse.cc"
     break;
 
   case 150:
-#line 360 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-3].str)); }
-#line 3008 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 363 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-3].str)); }
+#line 3217 "slghparse.cc"
     break;
 
   case 151:
-#line 361 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.newOutput(false,(yyvsp[-1].tree),(yyvsp[-3].str)); }
-#line 3014 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 364 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.newOutput(false,(yyvsp[-1].tree),(yyvsp[-3].str)); }
+#line 3223 "slghparse.cc"
     break;
 
   case 152:
-#line 362 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-5].str),*(yyvsp[-3].i)); delete (yyvsp[-3].i); }
-#line 3020 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 365 "slghparse.y"
+                                                { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-5].str),*(yyvsp[-3].i)); delete (yyvsp[-3].i); }
+#line 3229 "slghparse.cc"
     break;
 
   case 153:
-#line 363 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-5].str),*(yyvsp[-3].i)); delete (yyvsp[-3].i); }
-#line 3026 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 366 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-5].str),*(yyvsp[-3].i)); delete (yyvsp[-3].i); }
+#line 3235 "slghparse.cc"
     break;
 
   case 154:
-#line 364 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = (vector<OpTpl *> *)0; string errmsg = "Redefinition of symbol: "+(yyvsp[-1].specsym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
-#line 3032 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 367 "slghparse.y"
+                                 { (yyval.stmt) = (vector<OpTpl *> *)0; string errmsg = "Redefinition of symbol: "+(yyvsp[-1].specsym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
+#line 3241 "slghparse.cc"
     break;
 
   case 155:
-#line 365 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createStore((yyvsp[-4].starqual),(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3038 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 368 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createStore((yyvsp[-4].starqual),(yyvsp[-3].tree),(yyvsp[-1].tree)); }
+#line 3247 "slghparse.cc"
     break;
 
   case 156:
-#line 366 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createUserOpNoOut((yyvsp[-4].useropsym),(yyvsp[-2].param)); }
-#line 3044 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 369 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createUserOpNoOut((yyvsp[-4].useropsym),(yyvsp[-2].param)); }
+#line 3253 "slghparse.cc"
     break;
 
   case 157:
-#line 367 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.assignBitRange((yyvsp[-8].varnode),(uint4)*(yyvsp[-6].i),(uint4)*(yyvsp[-4].i),(yyvsp[-1].tree)); delete (yyvsp[-6].i), delete (yyvsp[-4].i); }
-#line 3050 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 370 "slghparse.y"
+                                                        { (yyval.stmt) = slgh->pcode.assignBitRange((yyvsp[-8].varnode),(uint4)*(yyvsp[-6].i),(uint4)*(yyvsp[-4].i),(yyvsp[-1].tree)); delete (yyvsp[-6].i), delete (yyvsp[-4].i); }
+#line 3259 "slghparse.cc"
     break;
 
   case 158:
-#line 368 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt)=slgh->pcode.assignBitRange((yyvsp[-3].bitsym)->getParentSymbol()->getVarnode(),(yyvsp[-3].bitsym)->getBitOffset(),(yyvsp[-3].bitsym)->numBits(),(yyvsp[-1].tree)); }
-#line 3056 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 371 "slghparse.y"
+                                        { (yyval.stmt)=slgh->pcode.assignBitRange((yyvsp[-3].bitsym)->getParentSymbol()->getVarnode(),(yyvsp[-3].bitsym)->getBitOffset(),(yyvsp[-3].bitsym)->numBits(),(yyvsp[-1].tree)); }
+#line 3265 "slghparse.cc"
     break;
 
   case 159:
-#line 369 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { delete (yyvsp[-3].varnode); delete (yyvsp[-1].i); yyerror("Illegal truncation on left-hand side of assignment"); YYERROR; }
-#line 3062 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 372 "slghparse.y"
+                                        { delete (yyvsp[-3].varnode); delete (yyvsp[-1].i); yyerror("Illegal truncation on left-hand side of assignment"); YYERROR; }
+#line 3271 "slghparse.cc"
     break;
 
   case 160:
-#line 370 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { delete (yyvsp[-3].varnode); delete (yyvsp[-1].i); yyerror("Illegal subpiece on left-hand side of assignment"); YYERROR; }
-#line 3068 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 373 "slghparse.y"
+                                        { delete (yyvsp[-3].varnode); delete (yyvsp[-1].i); yyerror("Illegal subpiece on left-hand side of assignment"); YYERROR; }
+#line 3277 "slghparse.cc"
     break;
 
   case 161:
-#line 371 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createOpConst(BUILD,(yyvsp[-1].operandsym)->getIndex()); }
-#line 3074 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 374 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createOpConst(BUILD,(yyvsp[-1].operandsym)->getIndex()); }
+#line 3283 "slghparse.cc"
     break;
 
   case 162:
-#line 372 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->createCrossBuild((yyvsp[-3].varnode),(yyvsp[-1].sectionsym)); }
-#line 3080 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 375 "slghparse.y"
+                                              { (yyval.stmt) = slgh->createCrossBuild((yyvsp[-3].varnode),(yyvsp[-1].sectionsym)); }
+#line 3289 "slghparse.cc"
     break;
 
   case 163:
-#line 373 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->createCrossBuild((yyvsp[-3].varnode),slgh->newSectionSymbol(*(yyvsp[-1].str))); delete (yyvsp[-1].str); }
-#line 3086 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 376 "slghparse.y"
+                                            { (yyval.stmt) = slgh->createCrossBuild((yyvsp[-3].varnode),slgh->newSectionSymbol(*(yyvsp[-1].str))); delete (yyvsp[-1].str); }
+#line 3295 "slghparse.cc"
     break;
 
   case 164:
-#line 374 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createOpConst(DELAY_SLOT,*(yyvsp[-2].i)); delete (yyvsp[-2].i); }
-#line 3092 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 377 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createOpConst(DELAY_SLOT,*(yyvsp[-2].i)); delete (yyvsp[-2].i); }
+#line 3301 "slghparse.cc"
     break;
 
   case 165:
-#line 375 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_BRANCH,new ExprTree((yyvsp[-1].varnode))); }
-#line 3098 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 378 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_BRANCH,new ExprTree((yyvsp[-1].varnode))); }
+#line 3307 "slghparse.cc"
     break;
 
   case 166:
-#line 376 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CBRANCH,new ExprTree((yyvsp[-1].varnode)),(yyvsp[-3].tree)); }
-#line 3104 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 379 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CBRANCH,new ExprTree((yyvsp[-1].varnode)),(yyvsp[-3].tree)); }
+#line 3313 "slghparse.cc"
     break;
 
   case 167:
-#line 377 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_BRANCHIND,(yyvsp[-2].tree)); }
-#line 3110 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 380 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_BRANCHIND,(yyvsp[-2].tree)); }
+#line 3319 "slghparse.cc"
     break;
 
   case 168:
-#line 378 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CALL,new ExprTree((yyvsp[-1].varnode))); }
-#line 3116 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 381 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CALL,new ExprTree((yyvsp[-1].varnode))); }
+#line 3325 "slghparse.cc"
     break;
 
   case 169:
-#line 379 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CALLIND,(yyvsp[-2].tree)); }
-#line 3122 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 382 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CALLIND,(yyvsp[-2].tree)); }
+#line 3331 "slghparse.cc"
     break;
 
   case 170:
-#line 380 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { yyerror("Must specify an indirect parameter for return"); YYERROR; }
-#line 3128 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 383 "slghparse.y"
+                                        { yyerror("Must specify an indirect parameter for return"); YYERROR; }
+#line 3337 "slghparse.cc"
     break;
 
   case 171:
-#line 381 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_RETURN,(yyvsp[-2].tree)); }
-#line 3134 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 384 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_RETURN,(yyvsp[-2].tree)); }
+#line 3343 "slghparse.cc"
     break;
 
   case 172:
-#line 382 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->createMacroUse((yyvsp[-4].macrosym),(yyvsp[-2].param)); }
-#line 3140 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 385 "slghparse.y"
+                                        { (yyval.stmt) = slgh->createMacroUse((yyvsp[-4].macrosym),(yyvsp[-2].param)); }
+#line 3349 "slghparse.cc"
     break;
 
   case 173:
-#line 383 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.stmt) = slgh->pcode.placeLabel( (yyvsp[0].labelsym) ); }
-#line 3146 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 386 "slghparse.y"
+                                        { (yyval.stmt) = slgh->pcode.placeLabel( (yyvsp[0].labelsym) ); }
+#line 3355 "slghparse.cc"
     break;
 
   case 174:
-#line 385 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = new ExprTree((yyvsp[0].varnode)); }
-#line 3152 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 388 "slghparse.y"
+              { (yyval.tree) = new ExprTree((yyvsp[0].varnode)); }
+#line 3361 "slghparse.cc"
     break;
 
   case 175:
-#line 386 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createLoad((yyvsp[-1].starqual),(yyvsp[0].tree)); }
-#line 3158 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 389 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createLoad((yyvsp[-1].starqual),(yyvsp[0].tree)); }
+#line 3367 "slghparse.cc"
     break;
 
   case 176:
-#line 387 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = (yyvsp[-1].tree); }
-#line 3164 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 390 "slghparse.y"
+                                { (yyval.tree) = (yyvsp[-1].tree); }
+#line 3373 "slghparse.cc"
     break;
 
   case 177:
-#line 388 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_ADD,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3170 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 391 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_ADD,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3379 "slghparse.cc"
     break;
 
   case 178:
-#line 389 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SUB,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3176 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 392 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SUB,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3385 "slghparse.cc"
     break;
 
   case 179:
-#line 390 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_EQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3182 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 393 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_EQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3391 "slghparse.cc"
     break;
 
   case 180:
-#line 391 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_NOTEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3188 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 394 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_NOTEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3397 "slghparse.cc"
     break;
 
   case 181:
-#line 392 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3194 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 395 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3403 "slghparse.cc"
     break;
 
   case 182:
-#line 393 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3200 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 396 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
+#line 3409 "slghparse.cc"
     break;
 
   case 183:
-#line 394 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3206 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 397 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3415 "slghparse.cc"
     break;
 
   case 184:
-#line 395 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3212 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 398 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
+#line 3421 "slghparse.cc"
     break;
 
   case 185:
-#line 396 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3218 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 399 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3427 "slghparse.cc"
     break;
 
   case 186:
-#line 397 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3224 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 400 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
+#line 3433 "slghparse.cc"
     break;
 
   case 187:
-#line 398 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3230 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 401 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3439 "slghparse.cc"
     break;
 
   case 188:
-#line 399 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3236 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 402 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
+#line 3445 "slghparse.cc"
     break;
 
   case 189:
-#line 400 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_2COMP,(yyvsp[0].tree)); }
-#line 3242 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 403 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_2COMP,(yyvsp[0].tree)); }
+#line 3451 "slghparse.cc"
     break;
 
   case 190:
-#line 401 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_NEGATE,(yyvsp[0].tree)); }
-#line 3248 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 404 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_NEGATE,(yyvsp[0].tree)); }
+#line 3457 "slghparse.cc"
     break;
 
   case 191:
-#line 402 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_XOR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3254 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 405 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_XOR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3463 "slghparse.cc"
     break;
 
   case 192:
-#line 403 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_AND,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3260 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 406 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_AND,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3469 "slghparse.cc"
     break;
 
   case 193:
-#line 404 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_OR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3266 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 407 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_OR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3475 "slghparse.cc"
     break;
 
   case 194:
-#line 405 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LEFT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3272 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 408 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LEFT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3481 "slghparse.cc"
     break;
 
   case 195:
-#line 406 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_RIGHT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3278 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 409 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_RIGHT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3487 "slghparse.cc"
     break;
 
   case 196:
-#line 407 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SRIGHT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3284 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 410 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SRIGHT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3493 "slghparse.cc"
     break;
 
   case 197:
-#line 408 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_MULT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3290 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 411 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_MULT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3499 "slghparse.cc"
     break;
 
   case 198:
-#line 409 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_DIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3296 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 412 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_DIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3505 "slghparse.cc"
     break;
 
   case 199:
-#line 410 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SDIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3302 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 413 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SDIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3511 "slghparse.cc"
     break;
 
   case 200:
-#line 411 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_REM,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3308 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 414 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_REM,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3517 "slghparse.cc"
     break;
 
   case 201:
-#line 412 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SREM,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3314 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 415 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SREM,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3523 "slghparse.cc"
     break;
 
   case 202:
-#line 413 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_NEGATE,(yyvsp[0].tree)); }
-#line 3320 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 416 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_NEGATE,(yyvsp[0].tree)); }
+#line 3529 "slghparse.cc"
     break;
 
   case 203:
-#line 414 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_XOR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3326 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 417 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_XOR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3535 "slghparse.cc"
     break;
 
   case 204:
-#line 415 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_AND,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3332 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 418 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_AND,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3541 "slghparse.cc"
     break;
 
   case 205:
-#line 416 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_OR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3338 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 419 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_OR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3547 "slghparse.cc"
     break;
 
   case 206:
-#line 417 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_EQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3344 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 420 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_EQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3553 "slghparse.cc"
     break;
 
   case 207:
-#line 418 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NOTEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3350 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 421 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NOTEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3559 "slghparse.cc"
     break;
 
   case 208:
-#line 419 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3356 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 422 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3565 "slghparse.cc"
     break;
 
   case 209:
-#line 420 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3362 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 423 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
+#line 3571 "slghparse.cc"
     break;
 
   case 210:
-#line 421 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3368 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 424 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3577 "slghparse.cc"
     break;
 
   case 211:
-#line 422 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3374 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 425 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
+#line 3583 "slghparse.cc"
     break;
 
   case 212:
-#line 423 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ADD,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3380 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 426 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ADD,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3589 "slghparse.cc"
     break;
 
   case 213:
-#line 424 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_SUB,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3386 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 427 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_SUB,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3595 "slghparse.cc"
     break;
 
   case 214:
-#line 425 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_MULT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3392 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 428 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_MULT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3601 "slghparse.cc"
     break;
 
   case 215:
-#line 426 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_DIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3398 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 429 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_DIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
+#line 3607 "slghparse.cc"
     break;
 
   case 216:
-#line 427 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NEG,(yyvsp[0].tree)); }
-#line 3404 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 430 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NEG,(yyvsp[0].tree)); }
+#line 3613 "slghparse.cc"
     break;
 
   case 217:
-#line 428 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ABS,(yyvsp[-1].tree)); }
-#line 3410 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 431 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ABS,(yyvsp[-1].tree)); }
+#line 3619 "slghparse.cc"
     break;
 
   case 218:
-#line 429 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_SQRT,(yyvsp[-1].tree)); }
-#line 3416 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 432 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_SQRT,(yyvsp[-1].tree)); }
+#line 3625 "slghparse.cc"
     break;
 
   case 219:
-#line 430 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SEXT,(yyvsp[-1].tree)); }
-#line 3422 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 433 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SEXT,(yyvsp[-1].tree)); }
+#line 3631 "slghparse.cc"
     break;
 
   case 220:
-#line 431 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_ZEXT,(yyvsp[-1].tree)); }
-#line 3428 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 434 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_ZEXT,(yyvsp[-1].tree)); }
+#line 3637 "slghparse.cc"
     break;
 
   case 221:
-#line 432 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_CARRY,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3434 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 435 "slghparse.y"
+                                   { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_CARRY,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
+#line 3643 "slghparse.cc"
     break;
 
   case 222:
-#line 433 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SCARRY,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3440 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 436 "slghparse.y"
+                                    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SCARRY,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
+#line 3649 "slghparse.cc"
     break;
 
   case 223:
-#line 434 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SBORROW,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3446 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 437 "slghparse.y"
+                                     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SBORROW,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
+#line 3655 "slghparse.cc"
     break;
 
   case 224:
-#line 435 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_FLOAT2FLOAT,(yyvsp[-1].tree)); }
-#line 3452 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 438 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_FLOAT2FLOAT,(yyvsp[-1].tree)); }
+#line 3661 "slghparse.cc"
     break;
 
   case 225:
-#line 436 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_INT2FLOAT,(yyvsp[-1].tree)); }
-#line 3458 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 439 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_INT2FLOAT,(yyvsp[-1].tree)); }
+#line 3667 "slghparse.cc"
     break;
 
   case 226:
-#line 437 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NAN,(yyvsp[-1].tree)); }
-#line 3464 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 440 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NAN,(yyvsp[-1].tree)); }
+#line 3673 "slghparse.cc"
     break;
 
   case 227:
-#line 438 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_TRUNC,(yyvsp[-1].tree)); }
-#line 3470 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 441 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_TRUNC,(yyvsp[-1].tree)); }
+#line 3679 "slghparse.cc"
     break;
 
   case 228:
-#line 439 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_CEIL,(yyvsp[-1].tree)); }
-#line 3476 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 442 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_CEIL,(yyvsp[-1].tree)); }
+#line 3685 "slghparse.cc"
     break;
 
   case 229:
-#line 440 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_FLOOR,(yyvsp[-1].tree)); }
-#line 3482 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 443 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_FLOOR,(yyvsp[-1].tree)); }
+#line 3691 "slghparse.cc"
     break;
 
   case 230:
-#line 441 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ROUND,(yyvsp[-1].tree)); }
-#line 3488 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 444 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ROUND,(yyvsp[-1].tree)); }
+#line 3697 "slghparse.cc"
     break;
 
   case 231:
-#line 442 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_NEW,(yyvsp[-1].tree)); }
-#line 3494 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 445 "slghparse.y"
+                            { (yyval.tree) = slgh->pcode.createOp(CPUI_NEW,(yyvsp[-1].tree)); }
+#line 3703 "slghparse.cc"
     break;
 
   case 232:
-#line 443 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_NEW,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3500 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 446 "slghparse.y"
+                                 { (yyval.tree) = slgh->pcode.createOp(CPUI_NEW,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
+#line 3709 "slghparse.cc"
     break;
 
   case 233:
-#line 444 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_POPCOUNT,(yyvsp[-1].tree)); }
-#line 3506 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 447 "slghparse.y"
+                             { (yyval.tree) = slgh->pcode.createOp(CPUI_POPCOUNT,(yyvsp[-1].tree)); }
+#line 3715 "slghparse.cc"
     break;
 
   case 234:
-#line 445 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createOp(CPUI_SUBPIECE,new ExprTree((yyvsp[-3].specsym)->getVarnode()),new ExprTree((yyvsp[-1].varnode))); }
-#line 3512 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 448 "slghparse.y"
+                                          { (yyval.tree) = slgh->pcode.createOp(CPUI_SUBPIECE,new ExprTree((yyvsp[-3].specsym)->getVarnode()),new ExprTree((yyvsp[-1].varnode))); }
+#line 3721 "slghparse.cc"
     break;
 
   case 235:
-#line 446 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createBitRange((yyvsp[-2].specsym),0,(uint4)(*(yyvsp[0].i) * 8)); delete (yyvsp[0].i); }
-#line 3518 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 449 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createBitRange((yyvsp[-2].specsym),0,(uint4)(*(yyvsp[0].i) * 8)); delete (yyvsp[0].i); }
+#line 3727 "slghparse.cc"
     break;
 
   case 236:
-#line 447 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createBitRange((yyvsp[-5].specsym),(uint4)*(yyvsp[-3].i),(uint4)*(yyvsp[-1].i)); delete (yyvsp[-3].i), delete (yyvsp[-1].i); }
-#line 3524 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 450 "slghparse.y"
+                                               { (yyval.tree) = slgh->pcode.createBitRange((yyvsp[-5].specsym),(uint4)*(yyvsp[-3].i),(uint4)*(yyvsp[-1].i)); delete (yyvsp[-3].i), delete (yyvsp[-1].i); }
+#line 3733 "slghparse.cc"
     break;
 
   case 237:
-#line 448 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree)=slgh->pcode.createBitRange((yyvsp[0].bitsym)->getParentSymbol(),(yyvsp[0].bitsym)->getBitOffset(),(yyvsp[0].bitsym)->numBits()); }
-#line 3530 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 451 "slghparse.y"
+                                { (yyval.tree)=slgh->pcode.createBitRange((yyvsp[0].bitsym)->getParentSymbol(),(yyvsp[0].bitsym)->getBitOffset(),(yyvsp[0].bitsym)->numBits()); }
+#line 3739 "slghparse.cc"
     break;
 
   case 238:
-#line 449 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.tree) = slgh->pcode.createUserOp((yyvsp[-3].useropsym),(yyvsp[-1].param)); }
-#line 3536 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 452 "slghparse.y"
+                                { (yyval.tree) = slgh->pcode.createUserOp((yyvsp[-3].useropsym),(yyvsp[-1].param)); }
+#line 3745 "slghparse.cc"
     break;
 
   case 239:
-#line 450 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { if ((*(yyvsp[-1].param)).size() < 2) { string errmsg = "Must at least two inputs to cpool"; yyerror(errmsg.c_str()); YYERROR; } (yyval.tree) = slgh->pcode.createVariadic(CPUI_CPOOLREF,(yyvsp[-1].param)); }
-#line 3542 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 453 "slghparse.y"
+                                   { if ((*(yyvsp[-1].param)).size() < 2) { string errmsg = "Must at least two inputs to cpool"; yyerror(errmsg.c_str()); YYERROR; } (yyval.tree) = slgh->pcode.createVariadic(CPUI_CPOOLREF,(yyvsp[-1].param)); }
+#line 3751 "slghparse.cc"
     break;
 
   case 240:
-#line 452 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = *(yyvsp[0].i); delete (yyvsp[0].i); (yyval.starqual)->id=ConstTpl((yyvsp[-3].spacesym)->getSpace()); }
-#line 3548 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 455 "slghparse.y"
+                                            { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = *(yyvsp[0].i); delete (yyvsp[0].i); (yyval.starqual)->id=ConstTpl((yyvsp[-3].spacesym)->getSpace()); }
+#line 3757 "slghparse.cc"
     break;
 
   case 241:
-#line 453 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = 0; (yyval.starqual)->id=ConstTpl((yyvsp[-1].spacesym)->getSpace()); }
-#line 3554 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 456 "slghparse.y"
+                                { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = 0; (yyval.starqual)->id=ConstTpl((yyvsp[-1].spacesym)->getSpace()); }
+#line 3763 "slghparse.cc"
     break;
 
   case 242:
-#line 454 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = *(yyvsp[0].i); delete (yyvsp[0].i); (yyval.starqual)->id=ConstTpl(slgh->getDefaultCodeSpace()); }
-#line 3560 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 457 "slghparse.y"
+                                { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = *(yyvsp[0].i); delete (yyvsp[0].i); (yyval.starqual)->id=ConstTpl(slgh->getDefaultCodeSpace()); }
+#line 3769 "slghparse.cc"
     break;
 
   case 243:
-#line 455 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = 0; (yyval.starqual)->id=ConstTpl(slgh->getDefaultCodeSpace()); }
-#line 3566 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 458 "slghparse.y"
+                                { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = 0; (yyval.starqual)->id=ConstTpl(slgh->getDefaultCodeSpace()); }
+#line 3775 "slghparse.cc"
     break;
 
   case 244:
-#line 457 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { VarnodeTpl *sym = (yyvsp[0].startsym)->getVarnode(); (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),sym->getOffset(),ConstTpl(ConstTpl::j_curspace_size)); delete sym; }
-#line 3572 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 460 "slghparse.y"
+                                { VarnodeTpl *sym = (yyvsp[0].startsym)->getVarnode(); (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),sym->getOffset(),ConstTpl(ConstTpl::j_curspace_size)); delete sym; }
+#line 3781 "slghparse.cc"
     break;
 
   case 245:
-#line 458 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { VarnodeTpl *sym = (yyvsp[0].endsym)->getVarnode(); (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),sym->getOffset(),ConstTpl(ConstTpl::j_curspace_size)); delete sym; }
-#line 3578 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 461 "slghparse.y"
+                                { VarnodeTpl *sym = (yyvsp[0].endsym)->getVarnode(); (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),sym->getOffset(),ConstTpl(ConstTpl::j_curspace_size)); delete sym; }
+#line 3787 "slghparse.cc"
     break;
 
   case 246:
-#line 459 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),ConstTpl(ConstTpl::real,*(yyvsp[0].i)),ConstTpl(ConstTpl::j_curspace_size)); delete (yyvsp[0].i); }
-#line 3584 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 462 "slghparse.y"
+                                { (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),ConstTpl(ConstTpl::real,*(yyvsp[0].i)),ConstTpl(ConstTpl::j_curspace_size)); delete (yyvsp[0].i); }
+#line 3793 "slghparse.cc"
     break;
 
   case 247:
-#line 460 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),ConstTpl(ConstTpl::real,0),ConstTpl(ConstTpl::j_curspace_size)); yyerror("Parsed integer is too big (overflow)"); }
-#line 3590 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 463 "slghparse.y"
+                                { (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),ConstTpl(ConstTpl::real,0),ConstTpl(ConstTpl::j_curspace_size)); yyerror("Parsed integer is too big (overflow)"); }
+#line 3799 "slghparse.cc"
     break;
 
   case 248:
-#line 461 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = (yyvsp[0].operandsym)->getVarnode(); (yyvsp[0].operandsym)->setCodeAddress(); }
-#line 3596 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 464 "slghparse.y"
+                                { (yyval.varnode) = (yyvsp[0].operandsym)->getVarnode(); (yyvsp[0].operandsym)->setCodeAddress(); }
+#line 3805 "slghparse.cc"
     break;
 
   case 249:
-#line 462 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { AddrSpace *spc = (yyvsp[-1].spacesym)->getSpace(); (yyval.varnode) = new VarnodeTpl(ConstTpl(spc),ConstTpl(ConstTpl::real,*(yyvsp[-3].i)),ConstTpl(ConstTpl::real,spc->getAddrSize())); delete (yyvsp[-3].i); }
-#line 3602 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 465 "slghparse.y"
+                                { AddrSpace *spc = (yyvsp[-1].spacesym)->getSpace(); (yyval.varnode) = new VarnodeTpl(ConstTpl(spc),ConstTpl(ConstTpl::real,*(yyvsp[-3].i)),ConstTpl(ConstTpl::real,spc->getAddrSize())); delete (yyvsp[-3].i); }
+#line 3811 "slghparse.cc"
     break;
 
   case 250:
-#line 463 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::j_relative,(yyvsp[0].labelsym)->getIndex()),ConstTpl(ConstTpl::real,sizeof(uintm))); (yyvsp[0].labelsym)->incrementRefCount(); }
-#line 3608 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 466 "slghparse.y"
+                                { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::j_relative,(yyvsp[0].labelsym)->getIndex()),ConstTpl(ConstTpl::real,sizeof(uintm))); (yyvsp[0].labelsym)->incrementRefCount(); }
+#line 3817 "slghparse.cc"
     break;
 
   case 251:
-#line 464 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = "Unknown jump destination: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3614 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 467 "slghparse.y"
+                                { string errmsg = "Unknown jump destination: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 3823 "slghparse.cc"
     break;
 
   case 252:
-#line 466 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
-#line 3620 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 469 "slghparse.y"
+                                { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
+#line 3829 "slghparse.cc"
     break;
 
   case 253:
-#line 467 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = (yyvsp[0].varnode); }
-#line 3626 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 470 "slghparse.y"
+                                { (yyval.varnode) = (yyvsp[0].varnode); }
+#line 3835 "slghparse.cc"
     break;
 
   case 254:
-#line 468 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = "Unknown varnode parameter: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3632 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 471 "slghparse.y"
+                                { string errmsg = "Unknown varnode parameter: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 3841 "slghparse.cc"
     break;
 
   case 255:
-#line 469 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
-#line 3638 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 472 "slghparse.y"
+                                { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
+#line 3847 "slghparse.cc"
     break;
 
   case 256:
-#line 471 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[0].i)),ConstTpl(ConstTpl::real,0)); delete (yyvsp[0].i); }
-#line 3644 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 474 "slghparse.y"
+                                { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[0].i)),ConstTpl(ConstTpl::real,0)); delete (yyvsp[0].i); }
+#line 3853 "slghparse.cc"
     break;
 
   case 257:
-#line 472 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,0),ConstTpl(ConstTpl::real,0)); yyerror("Parsed integer is too big (overflow)"); }
-#line 3650 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 475 "slghparse.y"
+                                { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,0),ConstTpl(ConstTpl::real,0)); yyerror("Parsed integer is too big (overflow)"); }
+#line 3859 "slghparse.cc"
     break;
 
   case 258:
-#line 473 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[-2].i)),ConstTpl(ConstTpl::real,*(yyvsp[0].i))); delete (yyvsp[-2].i); delete (yyvsp[0].i); }
-#line 3656 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 476 "slghparse.y"
+                                { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[-2].i)),ConstTpl(ConstTpl::real,*(yyvsp[0].i))); delete (yyvsp[-2].i); delete (yyvsp[0].i); }
+#line 3865 "slghparse.cc"
     break;
 
   case 259:
-#line 474 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),0); }
-#line 3662 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 477 "slghparse.y"
+                                { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),0); }
+#line 3871 "slghparse.cc"
     break;
 
   case 260:
-#line 475 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
-#line 3668 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 478 "slghparse.y"
+                                { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
+#line 3877 "slghparse.cc"
     break;
 
   case 261:
-#line 477 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
-#line 3674 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 480 "slghparse.y"
+                                { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
+#line 3883 "slghparse.cc"
     break;
 
   case 262:
-#line 478 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = "Unknown assignment varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3680 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 481 "slghparse.y"
+                                { string errmsg = "Unknown assignment varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 3889 "slghparse.cc"
     break;
 
   case 263:
-#line 479 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
-#line 3686 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 482 "slghparse.y"
+                                { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
+#line 3895 "slghparse.cc"
     break;
 
   case 264:
-#line 481 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.labelsym) = (yyvsp[-1].labelsym); }
-#line 3692 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 484 "slghparse.y"
+                                { (yyval.labelsym) = (yyvsp[-1].labelsym); }
+#line 3901 "slghparse.cc"
     break;
 
   case 265:
-#line 482 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.labelsym) = slgh->pcode.defineLabel( (yyvsp[-1].str) ); }
-#line 3698 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 485 "slghparse.y"
+                                { (yyval.labelsym) = slgh->pcode.defineLabel( (yyvsp[-1].str) ); }
+#line 3907 "slghparse.cc"
     break;
 
   case 266:
-#line 484 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
-#line 3704 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 487 "slghparse.y"
+                                { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
+#line 3913 "slghparse.cc"
     break;
 
   case 267:
-#line 485 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),0); }
-#line 3710 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 488 "slghparse.y"
+                                { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),0); }
+#line 3919 "slghparse.cc"
     break;
 
   case 268:
-#line 486 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
-#line 3716 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 489 "slghparse.y"
+                                { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
+#line 3925 "slghparse.cc"
     break;
 
   case 269:
-#line 487 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[-2].i)),ConstTpl(ConstTpl::real,*(yyvsp[0].i))); delete (yyvsp[-2].i); delete (yyvsp[0].i); }
-#line 3722 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 490 "slghparse.y"
+                                { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[-2].i)),ConstTpl(ConstTpl::real,*(yyvsp[0].i))); delete (yyvsp[-2].i); delete (yyvsp[0].i); }
+#line 3931 "slghparse.cc"
     break;
 
   case 270:
-#line 488 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg="Unknown export varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3728 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 491 "slghparse.y"
+                                { string errmsg="Unknown export varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 3937 "slghparse.cc"
     break;
 
   case 271:
-#line 489 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
-#line 3734 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 492 "slghparse.y"
+                                { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
+#line 3943 "slghparse.cc"
     break;
 
   case 272:
-#line 491 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.famsym) = (yyvsp[0].valuesym); }
-#line 3740 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 494 "slghparse.y"
+                                { (yyval.famsym) = (yyvsp[0].valuesym); }
+#line 3949 "slghparse.cc"
     break;
 
   case 273:
-#line 492 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.famsym) = (yyvsp[0].valuemapsym); }
-#line 3746 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 495 "slghparse.y"
+                                { (yyval.famsym) = (yyvsp[0].valuemapsym); }
+#line 3955 "slghparse.cc"
     break;
 
   case 274:
-#line 493 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.famsym) = (yyvsp[0].contextsym); }
-#line 3752 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 496 "slghparse.y"
+                                { (yyval.famsym) = (yyvsp[0].contextsym); }
+#line 3961 "slghparse.cc"
     break;
 
   case 275:
-#line 494 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.famsym) = (yyvsp[0].namesym); }
-#line 3758 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 497 "slghparse.y"
+                                { (yyval.famsym) = (yyvsp[0].namesym); }
+#line 3967 "slghparse.cc"
     break;
 
   case 276:
-#line 495 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.famsym) = (yyvsp[0].varlistsym); }
-#line 3764 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 498 "slghparse.y"
+                                { (yyval.famsym) = (yyvsp[0].varlistsym); }
+#line 3973 "slghparse.cc"
     break;
 
   case 277:
-#line 497 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.specsym) = (yyvsp[0].varsym); }
-#line 3770 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 500 "slghparse.y"
+                                { (yyval.specsym) = (yyvsp[0].varsym); }
+#line 3979 "slghparse.cc"
     break;
 
   case 278:
-#line 498 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.specsym) = (yyvsp[0].specsym); }
-#line 3776 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 501 "slghparse.y"
+                                { (yyval.specsym) = (yyvsp[0].specsym); }
+#line 3985 "slghparse.cc"
     break;
 
   case 279:
-#line 499 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.specsym) = (yyvsp[0].operandsym); }
-#line 3782 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 502 "slghparse.y"
+                                { (yyval.specsym) = (yyvsp[0].operandsym); }
+#line 3991 "slghparse.cc"
     break;
 
   case 280:
-#line 500 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.specsym) = (yyvsp[0].startsym); }
-#line 3788 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 503 "slghparse.y"
+                                { (yyval.specsym) = (yyvsp[0].startsym); }
+#line 3997 "slghparse.cc"
     break;
 
   case 281:
-#line 501 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.specsym) = (yyvsp[0].endsym); }
-#line 3794 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 504 "slghparse.y"
+                                { (yyval.specsym) = (yyvsp[0].endsym); }
+#line 4003 "slghparse.cc"
     break;
 
   case 282:
-#line 503 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.str) = new string; (*(yyval.str)) += (yyvsp[0].ch); }
-#line 3800 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 506 "slghparse.y"
+                                { (yyval.str) = new string; (*(yyval.str)) += (yyvsp[0].ch); }
+#line 4009 "slghparse.cc"
     break;
 
   case 283:
-#line 504 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.str) = (yyvsp[-1].str); (*(yyval.str)) += (yyvsp[0].ch); }
-#line 3806 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 507 "slghparse.y"
+                                { (yyval.str) = (yyvsp[-1].str); (*(yyval.str)) += (yyvsp[0].ch); }
+#line 4015 "slghparse.cc"
     break;
 
   case 284:
-#line 506 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.biglist) = (yyvsp[-1].biglist); }
-#line 3812 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 509 "slghparse.y"
+                                { (yyval.biglist) = (yyvsp[-1].biglist); }
+#line 4021 "slghparse.cc"
     break;
 
   case 285:
-#line 507 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3818 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 510 "slghparse.y"
+                                { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
+#line 4027 "slghparse.cc"
     break;
 
   case 286:
-#line 508 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3824 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 511 "slghparse.y"
+                                { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
+#line 4033 "slghparse.cc"
     break;
 
   case 287:
-#line 510 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3830 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 513 "slghparse.y"
+                                { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
+#line 4039 "slghparse.cc"
     break;
 
   case 288:
-#line 511 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3836 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 514 "slghparse.y"
+                                { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
+#line 4045 "slghparse.cc"
     break;
 
   case 289:
-#line 512 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { if (*(yyvsp[0].str)!="_") { string errmsg = "Expecting integer but saw: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 515 "slghparse.y"
+                                { if (*(yyvsp[0].str)!="_") { string errmsg = "Expecting integer but saw: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
                                   (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back((intb)0xBADBEEF); delete (yyvsp[0].str); }
-#line 3843 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 4052 "slghparse.cc"
     break;
 
   case 290:
-#line 514 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.biglist) = (yyvsp[-1].biglist); (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3849 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 517 "slghparse.y"
+                                { (yyval.biglist) = (yyvsp[-1].biglist); (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
+#line 4058 "slghparse.cc"
     break;
 
   case 291:
-#line 515 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.biglist) = (yyvsp[-2].biglist); (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3855 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 518 "slghparse.y"
+                                { (yyval.biglist) = (yyvsp[-2].biglist); (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
+#line 4064 "slghparse.cc"
     break;
 
   case 292:
-#line 516 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { if (*(yyvsp[0].str)!="_") { string errmsg = "Expecting integer but saw: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 519 "slghparse.y"
+                                { if (*(yyvsp[0].str)!="_") { string errmsg = "Expecting integer but saw: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
                                   (yyval.biglist) = (yyvsp[-1].biglist); (yyval.biglist)->push_back((intb)0xBADBEEF); delete (yyvsp[0].str); }
-#line 3862 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 4071 "slghparse.cc"
     break;
 
   case 293:
-#line 519 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = (yyvsp[-1].strlist); }
-#line 3868 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 522 "slghparse.y"
+                                { (yyval.strlist) = (yyvsp[-1].strlist); }
+#line 4077 "slghparse.cc"
     break;
 
   case 294:
-#line 520 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 3874 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 523 "slghparse.y"
+                                { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 4083 "slghparse.cc"
     break;
 
   case 295:
-#line 522 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( *(yyvsp[0].str) ); delete (yyvsp[0].str); }
-#line 3880 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 525 "slghparse.y"
+                                { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( *(yyvsp[0].str) ); delete (yyvsp[0].str); }
+#line 4089 "slghparse.cc"
     break;
 
   case 296:
-#line 523 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 3886 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 526 "slghparse.y"
+                                { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 4095 "slghparse.cc"
     break;
 
   case 297:
-#line 524 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = (yyvsp[0].anysym)->getName()+": redefined"; yyerror(errmsg.c_str()); YYERROR; }
-#line 3892 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 527 "slghparse.y"
+                                { string errmsg = (yyvsp[0].anysym)->getName()+": redefined"; yyerror(errmsg.c_str()); YYERROR; }
+#line 4101 "slghparse.cc"
     break;
 
   case 298:
-#line 526 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = (yyvsp[-1].strlist); }
-#line 3898 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 529 "slghparse.y"
+                                     { (yyval.strlist) = (yyvsp[-1].strlist); }
+#line 4107 "slghparse.cc"
     break;
 
   case 299:
-#line 528 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( *(yyvsp[0].str) ); delete (yyvsp[0].str); }
-#line 3904 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 531 "slghparse.y"
+                                { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( *(yyvsp[0].str) ); delete (yyvsp[0].str); }
+#line 4113 "slghparse.cc"
     break;
 
   case 300:
-#line 529 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( (yyvsp[0].anysym)->getName() ); }
-#line 3910 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 532 "slghparse.y"
+                                { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( (yyvsp[0].anysym)->getName() ); }
+#line 4119 "slghparse.cc"
     break;
 
   case 301:
-#line 530 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 3916 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 533 "slghparse.y"
+                                { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 4125 "slghparse.cc"
     break;
 
   case 302:
-#line 531 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back((yyvsp[0].anysym)->getName()); }
-#line 3922 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 534 "slghparse.y"
+                                { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back((yyvsp[0].anysym)->getName()); }
+#line 4131 "slghparse.cc"
     break;
 
   case 303:
-#line 533 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = (yyvsp[-1].symlist); }
-#line 3928 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 536 "slghparse.y"
+                                { (yyval.symlist) = (yyvsp[-1].symlist); }
+#line 4137 "slghparse.cc"
     break;
 
   case 304:
-#line 534 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].valuesym)); }
-#line 3934 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 537 "slghparse.y"
+                                { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].valuesym)); }
+#line 4143 "slghparse.cc"
     break;
 
   case 305:
-#line 535 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
-#line 3940 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 538 "slghparse.y"
+                                { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
+#line 4149 "slghparse.cc"
     break;
 
   case 306:
-#line 537 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back( (yyvsp[0].valuesym) ); }
-#line 3946 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 540 "slghparse.y"
+                                { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back( (yyvsp[0].valuesym) ); }
+#line 4155 "slghparse.cc"
     break;
 
   case 307:
-#line 538 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
-#line 3952 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 541 "slghparse.y"
+                                { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
+#line 4161 "slghparse.cc"
     break;
 
   case 308:
-#line 539 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].valuesym)); }
-#line 3958 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 542 "slghparse.y"
+                                { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].valuesym)); }
+#line 4167 "slghparse.cc"
     break;
 
   case 309:
-#line 540 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
-#line 3964 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 543 "slghparse.y"
+                                { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
+#line 4173 "slghparse.cc"
     break;
 
   case 310:
-#line 541 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { string errmsg = *(yyvsp[0].str)+": is not a value pattern"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3970 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 544 "slghparse.y"
+                                { string errmsg = *(yyvsp[0].str)+": is not a value pattern"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 4179 "slghparse.cc"
     break;
 
   case 311:
-#line 543 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = (yyvsp[-1].symlist); }
-#line 3976 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 546 "slghparse.y"
+                                { (yyval.symlist) = (yyvsp[-1].symlist); }
+#line 4185 "slghparse.cc"
     break;
 
   case 312:
-#line 544 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].varsym)); }
-#line 3982 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 547 "slghparse.y"
+                                { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].varsym)); }
+#line 4191 "slghparse.cc"
     break;
 
   case 313:
-#line 546 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].varsym)); }
-#line 3988 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 549 "slghparse.y"
+                                { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].varsym)); }
+#line 4197 "slghparse.cc"
     break;
 
   case 314:
-#line 547 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { if (*(yyvsp[0].str)!="_") { string errmsg = *(yyvsp[0].str)+": is not a varnode symbol"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 550 "slghparse.y"
+                                { if (*(yyvsp[0].str)!="_") { string errmsg = *(yyvsp[0].str)+": is not a varnode symbol"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
 				  (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((SleighSymbol *)0); delete (yyvsp[0].str); }
-#line 3995 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 4204 "slghparse.cc"
     break;
 
   case 315:
-#line 549 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].varsym)); }
-#line 4001 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 552 "slghparse.y"
+                                { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].varsym)); }
+#line 4210 "slghparse.cc"
     break;
 
   case 316:
-#line 550 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { if (*(yyvsp[0].str)!="_") { string errmsg = *(yyvsp[0].str)+": is not a varnode symbol"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
+#line 553 "slghparse.y"
+                                { if (*(yyvsp[0].str)!="_") { string errmsg = *(yyvsp[0].str)+": is not a varnode symbol"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
                                   (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((SleighSymbol *)0); delete (yyvsp[0].str); }
-#line 4008 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 4217 "slghparse.cc"
     break;
 
   case 317:
-#line 553 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.param) = new vector<ExprTree *>; }
-#line 4014 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 556 "slghparse.y"
+                                { (yyval.param) = new vector<ExprTree *>; }
+#line 4223 "slghparse.cc"
     break;
 
   case 318:
-#line 554 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.param) = new vector<ExprTree *>; (yyval.param)->push_back((yyvsp[0].tree)); }
-#line 4020 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 557 "slghparse.y"
+                                { (yyval.param) = new vector<ExprTree *>; (yyval.param)->push_back((yyvsp[0].tree)); }
+#line 4229 "slghparse.cc"
     break;
 
   case 319:
-#line 555 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.param) = (yyvsp[-2].param); (yyval.param)->push_back((yyvsp[0].tree)); }
-#line 4026 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 558 "slghparse.y"
+                                { (yyval.param) = (yyvsp[-2].param); (yyval.param)->push_back((yyvsp[0].tree)); }
+#line 4235 "slghparse.cc"
     break;
 
   case 320:
-#line 557 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = new vector<string>; }
-#line 4032 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 560 "slghparse.y"
+                                { (yyval.strlist) = new vector<string>; }
+#line 4241 "slghparse.cc"
     break;
 
   case 321:
-#line 558 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 4038 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 561 "slghparse.y"
+                                { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 4247 "slghparse.cc"
     break;
 
   case 322:
-#line 559 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.strlist) = (yyvsp[-2].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 4044 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 562 "slghparse.y"
+                                { (yyval.strlist) = (yyvsp[-2].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
+#line 4253 "slghparse.cc"
     break;
 
   case 323:
-#line 561 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].spacesym); }
-#line 4050 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 564 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].spacesym); }
+#line 4259 "slghparse.cc"
     break;
 
   case 324:
-#line 562 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].sectionsym); }
-#line 4056 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 565 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].sectionsym); }
+#line 4265 "slghparse.cc"
     break;
 
   case 325:
-#line 563 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].tokensym); }
-#line 4062 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 566 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].tokensym); }
+#line 4271 "slghparse.cc"
     break;
 
   case 326:
-#line 564 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].useropsym); }
-#line 4068 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 567 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].useropsym); }
+#line 4277 "slghparse.cc"
     break;
 
   case 327:
-#line 565 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].macrosym); }
-#line 4074 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 568 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].macrosym); }
+#line 4283 "slghparse.cc"
     break;
 
   case 328:
-#line 566 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].subtablesym); }
-#line 4080 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 569 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].subtablesym); }
+#line 4289 "slghparse.cc"
     break;
 
   case 329:
-#line 567 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].valuesym); }
-#line 4086 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 570 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].valuesym); }
+#line 4295 "slghparse.cc"
     break;
 
   case 330:
-#line 568 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].valuemapsym); }
-#line 4092 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 571 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].valuemapsym); }
+#line 4301 "slghparse.cc"
     break;
 
   case 331:
-#line 569 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].contextsym); }
-#line 4098 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 572 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].contextsym); }
+#line 4307 "slghparse.cc"
     break;
 
   case 332:
-#line 570 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].namesym); }
-#line 4104 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 573 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].namesym); }
+#line 4313 "slghparse.cc"
     break;
 
   case 333:
-#line 571 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].varsym); }
-#line 4110 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 574 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].varsym); }
+#line 4319 "slghparse.cc"
     break;
 
   case 334:
-#line 572 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].varlistsym); }
-#line 4116 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 575 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].varlistsym); }
+#line 4325 "slghparse.cc"
     break;
 
   case 335:
-#line 573 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].operandsym); }
-#line 4122 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 576 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].operandsym); }
+#line 4331 "slghparse.cc"
     break;
 
   case 336:
-#line 574 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].startsym); }
-#line 4128 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 577 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].startsym); }
+#line 4337 "slghparse.cc"
     break;
 
   case 337:
-#line 575 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].endsym); }
-#line 4134 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 578 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].endsym); }
+#line 4343 "slghparse.cc"
     break;
 
   case 338:
-#line 576 "src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
-    { (yyval.anysym) = (yyvsp[0].bitsym); }
-#line 4140 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 579 "slghparse.y"
+                                { (yyval.anysym) = (yyvsp[0].bitsym); }
+#line 4349 "slghparse.cc"
     break;
 
 
-#line 4144 "src/decompile/cpp/slghparse.cc" /* yacc.c:1646  */
+#line 4353 "slghparse.cc"
+
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -4176,18 +4371,18 @@ yyreduce:
   YY_STACK_PRINT (yyss, yyssp);
 
   *++yyvsp = yyval;
+  *++yylsp = yyloc;
 
   /* Now 'shift' the result of the reduction.  Determine what state
      that goes to, based on the state we popped back to and the rule
      number reduced by.  */
-
-  yyn = yyr1[yyn];
-
-  yystate = yypgoto[yyn - YYNTOKENS] + *yyssp;
-  if (0 <= yystate && yystate <= YYLAST && yycheck[yystate] == *yyssp)
-    yystate = yytable[yystate];
-  else
-    yystate = yydefgoto[yyn - YYNTOKENS];
+  {
+    const int yylhs = yyr1[yyn] - YYNTOKENS;
+    const int yyi = yypgoto[yylhs] + *yyssp;
+    yystate = (0 <= yyi && yyi <= YYLAST && yycheck[yyi] == *yyssp
+               ? yytable[yyi]
+               : yydefgoto[yylhs]);
+  }
 
   goto yynewstate;
 
@@ -4219,7 +4414,7 @@ yyerrlab:
           {
             if (yymsg != yymsgbuf)
               YYSTACK_FREE (yymsg);
-            yymsg = (char *) YYSTACK_ALLOC (yymsg_alloc);
+            yymsg = YY_CAST (char *, YYSTACK_ALLOC (YY_CAST (YYSIZE_T, yymsg_alloc)));
             if (!yymsg)
               {
                 yymsg = yymsgbuf;
@@ -4240,7 +4435,7 @@ yyerrlab:
 #endif
     }
 
-
+  yyerror_range[1] = yylloc;
 
   if (yyerrstatus == 3)
     {
@@ -4256,7 +4451,7 @@ yyerrlab:
       else
         {
           yydestruct ("Error: discarding",
-                      yytoken, &yylval);
+                      yytoken, &yylval, &yylloc);
           yychar = YYEMPTY;
         }
     }
@@ -4270,12 +4465,10 @@ yyerrlab:
 | yyerrorlab -- error raised explicitly by YYERROR.  |
 `---------------------------------------------------*/
 yyerrorlab:
-
-  /* Pacify compilers like GCC when the user code never invokes
-     YYERROR and the label yyerrorlab therefore never appears in user
-     code.  */
-  if (/*CONSTCOND*/ 0)
-     goto yyerrorlab;
+  /* Pacify compilers when the user code never invokes YYERROR and the
+     label yyerrorlab therefore never appears in user code.  */
+  if (0)
+    YYERROR;
 
   /* Do not reclaim the symbols of the rule whose action triggered
      this YYERROR.  */
@@ -4310,9 +4503,9 @@ yyerrlab1:
       if (yyssp == yyss)
         YYABORT;
 
-
+      yyerror_range[1] = *yylsp;
       yydestruct ("Error: popping",
-                  yystos[yystate], yyvsp);
+                  yystos[yystate], yyvsp, yylsp);
       YYPOPSTACK (1);
       yystate = *yyssp;
       YY_STACK_PRINT (yyss, yyssp);
@@ -4322,6 +4515,11 @@ yyerrlab1:
   *++yyvsp = yylval;
   YY_IGNORE_MAYBE_UNINITIALIZED_END
 
+  yyerror_range[2] = yylloc;
+  /* Using YYLLOC is tempting, but would change the location of
+     the lookahead.  YYLOC is available though.  */
+  YYLLOC_DEFAULT (yyloc, yyerror_range, 2);
+  *++yylsp = yyloc;
 
   /* Shift the error token.  */
   YY_SYMBOL_PRINT ("Shifting", yystos[yyn], yyvsp, yylsp);
@@ -4337,12 +4535,14 @@ yyacceptlab:
   yyresult = 0;
   goto yyreturn;
 
+
 /*-----------------------------------.
 | yyabortlab -- YYABORT comes here.  |
 `-----------------------------------*/
 yyabortlab:
   yyresult = 1;
   goto yyreturn;
+
 
 #if !defined yyoverflow || YYERROR_VERBOSE
 /*-------------------------------------------------.
@@ -4354,6 +4554,10 @@ yyexhaustedlab:
   /* Fall through.  */
 #endif
 
+
+/*-----------------------------------------------------.
+| yyreturn -- parsing is finished, return the result.  |
+`-----------------------------------------------------*/
 yyreturn:
   if (yychar != YYEMPTY)
     {
@@ -4361,7 +4565,7 @@ yyreturn:
          user semantic actions for why this is necessary.  */
       yytoken = YYTRANSLATE (yychar);
       yydestruct ("Cleanup: discarding lookahead",
-                  yytoken, &yylval);
+                  yytoken, &yylval, &yylloc);
     }
   /* Do not reclaim the symbols of the rule whose action triggered
      this YYABORT or YYACCEPT.  */
@@ -4370,7 +4574,7 @@ yyreturn:
   while (yyssp != yyss)
     {
       yydestruct ("Cleanup: popping",
-                  yystos[*yyssp], yyvsp);
+                  yystos[+*yyssp], yyvsp, yylsp);
       YYPOPSTACK (1);
     }
 #ifndef yyoverflow
@@ -4383,12 +4587,13 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 578 "src/decompile/cpp/slghparse.y" /* yacc.c:1906  */
+#line 581 "slghparse.y"
 
 
 int yyerror(const char *s)
 
 {
-  slgh->reportError(s);
+  const Location loc{__FILE__, yylineno};
+  slgh->reportError(&loc, s);
   return 0;
 }
