@@ -25,6 +25,13 @@
   extern int yylex(void);
   extern int yylineno;
   extern int yyerror(const char *str );
+  extern char *yytext;
+  extern struct yylloc {
+    int first_line;
+    int first_column;
+    int last_line;
+    int last_column;
+  };
 %}
 
 %locations
@@ -583,7 +590,8 @@ anysymbol: SPACESYM		{ $$ = $1; }
 int yyerror(const char *s)
 
 {
-  const Location loc{__FILE__, yylineno};
-  slgh->reportError(&loc, s);
+  // const Location loc{__FILE__, yylineno};
+  std::string verbose_s = std::string{"yytext: "} + yytext + " " + s;
+  slgh->reportError(slgh->getCurrentLocation(), verbose_s);
   return 0;
 }

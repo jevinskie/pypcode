@@ -296,7 +296,9 @@ private:
   mutable Location currentLocCache;	///< Location for (last) request of current location
   int4 errors;				///< Number of fatal errors encountered
 
+public:
   const Location* getCurrentLocation(void) const;	///< Get the current file and line number being parsed
+private:
   void predefinedSymbols(void);				///< Get SLEIGHs predefined address spaces and symbols
   int4 calcContextVarLayout(int4 start,int4 sz,int4 numbits);
   void buildDecisionTrees(void);			///< Build decision trees for all subtables

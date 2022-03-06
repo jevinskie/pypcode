@@ -482,6 +482,7 @@ int4 scan_number(char *numtext,YYSTYPE *lval,bool signednum)
 %}
 
 %option yylineno
+/* %option bison-locations */
 
 %x defblock
 %x macroblock

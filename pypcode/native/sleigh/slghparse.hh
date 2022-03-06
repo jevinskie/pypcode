@@ -167,7 +167,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 32 "slghparse.y"
+#line 39 "slghparse.y"
 
   char ch;
   uintb *i;
