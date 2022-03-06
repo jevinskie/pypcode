@@ -23,8 +23,11 @@
   extern FILE *yyin;
   extern int yydebug;
   extern int yylex(void);
+  extern int yylineno;
   extern int yyerror(const char *str );
 %}
+
+%locations
 
 %union {
   char ch;
@@ -580,6 +583,7 @@ anysymbol: SPACESYM		{ $$ = $1; }
 int yyerror(const char *s)
 
 {
-  slgh->reportError(s);
+  const Location loc{__FILE__, yylineno};
+  slgh->reportError(&loc, s);
   return 0;
 }

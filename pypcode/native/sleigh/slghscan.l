@@ -481,6 +481,8 @@ int4 scan_number(char *numtext,YYSTYPE *lval,bool signednum)
 
 %}
 
+%option yylineno
+
 %x defblock
 %x macroblock
 %x print

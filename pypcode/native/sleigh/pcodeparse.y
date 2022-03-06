@@ -16,12 +16,15 @@
 %{
 #include "pcodeparse.hh"
 
-  //#define YYERROR_VERBOSE
+  #define YYERROR_VERBOSE
   extern int yylex(void);
   static PcodeSnippet *pcode;
   extern int yydebug;
+  extern int yylineno;
   extern int yyerror(const char *str );
 %}
+
+%locations
 
 %union {
   uintb *i;
@@ -635,10 +638,10 @@ void PcodeLexer::initialize(istream *t)
   }
 }
 
-uintb PcodeSnippet::allocateTemp(void)
+uint4 PcodeSnippet::allocateTemp(void)
 
 { // Allocate a variable in the unique space and return the offset
-  uintb res = tempbase;
+  uint4 res = tempbase;
   tempbase += 16;
   return res;
 }
@@ -803,6 +806,7 @@ int yylex(void) {
 int yyerror(const char *s)
 
 {
-  pcode->reportError((const Location *)0,s);
+  const Location loc{__FILE__, yylineno};
+  pcode->reportError(&loc,s);
   return 0;
 }

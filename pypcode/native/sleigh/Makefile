@@ -395,7 +395,7 @@ com_dbg/depend.lib_sla:	$(LIBSLA_NAMES:%=%.cc)
 	sed 's,\(.*\)\.o[ :]*,com_dbg/\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
 
-include $(DEPNAMES)
+# include $(DEPNAMES)
 
 doc:
 	doxygen Doxyfile
