@@ -9,7 +9,7 @@
 #include "sleigh/sleigh.hh"
 #include "csleigh.h"
 
-#define DEBUG
+// #define DEBUG
 #ifdef DEBUG
 #define LOG(fmt, ...) fprintf(stderr, "csleigh: " fmt "\n", ## __VA_ARGS__);
 #else

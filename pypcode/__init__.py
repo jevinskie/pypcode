@@ -321,9 +321,9 @@ class Varnode(ContextObj):
   @classmethod
   def from_c(cls, ctx:Context, cobj:'csleigh_Varnode') -> 'Varnode':
     res = cls(ctx, AddrSpace.from_c(ctx, cobj.space), cobj.offset, cobj.size)
-    if res.offset in (0x7E80, 0x8100,):
-      print(f"Varnode.from_c(ctx: {cobj}) = space: {res.space} off: {res.offset:#x} sz: {res.size}")
-      traceback.print_stack()
+    # if res.offset in (0x7E80, 0x8100,):
+    #   print(f"Varnode.from_c(ctx: {cobj}) = space: {res.space} off: {res.offset:#x} sz: {res.size}")
+    #   traceback.print_stack()
     return res
 
   def __str__(self):
