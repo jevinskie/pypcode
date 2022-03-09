@@ -179,6 +179,13 @@ class Context:
     res_c = csleigh_translate(self.ctx_c, c_data, max_bytes, base, max_inst, bb_terminating)
     res = TranslationResult.from_c(self, res_c)
     csleigh_freeResult(res_c)
+    if res.error is None:
+      for inst in res.instructions:
+        if inst.length_delay:
+          buf_off = inst.address.offset + inst.length - base
+          binst = self.translate(code[buf_off:], base + buf_off, max_bytes=inst.length_delay)
+          assert binst.error is None
+          inst.delayslot_instructions = binst.instructions
     return res
 
   def get_register_name(self, space:'AddrSpace', offset:int, size:int) -> str:
@@ -585,6 +592,7 @@ class Translation(ContextObj):
     'address',
     'length',
     'length_delay',
+    'delayslot_instructions',
     'asm_mnem',
     'asm_body',
     'ops',
@@ -593,6 +601,7 @@ class Translation(ContextObj):
   address: Address
   length: int
   length_delay: int
+  delayslot_instructions: Sequence['Translation']
   asm_mnem: str
   asm_body: str
   ops: Sequence[PcodeOp]
@@ -605,6 +614,7 @@ class Translation(ContextObj):
     self.asm_mnem = asm_mnem
     self.asm_body = asm_body
     self.ops = ops
+    self.delayslot_instructions = []
 
   @classmethod
   def from_c(cls, ctx:Context, cobj:'csleigh_Translation') -> 'Translation':
