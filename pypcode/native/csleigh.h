@@ -217,6 +217,11 @@ const char *LPX(AddrSpace_getName)(LPX(AddrSpace) as);
 const char *LPX(Sleigh_getRegisterName)(LPX(Context) c, LPX(AddrSpace) as, uintb off, int4 size);
 
 /*
+ * Sleigh::getRegister
+ */
+LPX(Varnode) *LPX(Sleigh_getRegister)(LPX(Context) c, const char *name);
+
+/*
  * Address::isBigEndian
  */
 int LPX(Addr_isBigEndian)(LPX(Address) *a);

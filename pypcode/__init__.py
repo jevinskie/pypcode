@@ -12,9 +12,9 @@ from typing import Generator, Sequence, Optional, Mapping, Union, Literal
 from ._csleigh import ffi
 from ._csleigh.lib import *
 
-import pretty_traceback
-pretty_traceback.install()
-import sys, traceback
+# import pretty_traceback
+# pretty_traceback.install()
+# import sys, traceback
 
 PKG_SRC_DIR = os.path.abspath(os.path.dirname(__file__))
 SPECFILES_DIR = os.path.join(PKG_SRC_DIR, 'processors')
@@ -194,6 +194,10 @@ class Context:
     """
     return ffi.string(csleigh_Sleigh_getRegisterName(
       self.ctx_c, space.to_c(), offset, size)).decode('utf-8')
+
+  def get_register(self, name:str) -> 'Varnode':
+    cres = csleigh_Sleigh_getRegister(self.ctx_c, name.encode('utf-8'))
+    return Varnode.from_c(self, cres)
 
   def get_register_names(self) -> [str]:
     res = []

@@ -342,6 +342,11 @@ public:
         return &res->m_res;
     }
 
+    LPX(Varnode) *Sleigh_getRegister(const char *name)
+    {
+        return (LPX(Varnode)*)&m_sleigh->getRegister(name);
+    }
+
     const char *Sleigh_getRegisterName(AddrSpace* as, uintb off, int4 size)
     {
         m_register_name_cache = m_sleigh->getRegisterName(as, off, size);
@@ -406,6 +411,11 @@ LPX(AddrSpace) LPX(Addr_getSpaceFromConst)(LPX(Address) *a)
 const char *LPX(AddrSpace_getName)(LPX(AddrSpace) as)
 {
     return ((AddrSpace *)as)->getName().c_str();
+}
+
+LPX(Varnode) *LPX(Sleigh_getRegister)(LPX(Context) c, const char *name)
+{
+    return ((TranslationContext *)c)->Sleigh_getRegister(name);
 }
 
 const char *LPX(Sleigh_getRegisterName)(LPX(Context) c, LPX(AddrSpace) as,
