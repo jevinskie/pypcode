@@ -267,7 +267,8 @@ public:
                                       unsigned int num_bytes,
                                       uintb address,
                                       unsigned int max_instructions,
-                                      bool bb_terminating)
+                                      bool bb_terminating,
+                                      bool bb_nonlinear_terminating)
     {
         LOG("%p Translating bytes=%p, num_bytes=%d, address=%lx, "
             "max_instructions=%d",
@@ -304,6 +305,8 @@ public:
 
                 offset += ilen_delay;
 
+
+                assert(!(bb_terminating && bb_nonlinear_terminating));
                 if (bb_terminating) {
                     for (auto op : res->m_pcodes.back().m_ops) {
                         if (op.opcode == OP(BRANCH) ||
@@ -312,6 +315,21 @@ public:
                             op.opcode == OP(RETURN) ||
                             op.opcode == OP(CALL) ||
                             op.opcode == OP(CALLIND)) {
+                            end_bb = true;
+                            break;
+                        }
+                    }
+                } else if (bb_nonlinear_terminating) {
+                    for (auto op : res->m_pcodes.back().m_ops) {
+                        if (op.opcode == OP(BRANCH) ||
+                            op.opcode == OP(CBRANCH)) {
+                            if (op.inputs[0].space != m_sleigh->getConstantSpace()) {
+                                end_bb = true;
+                                break;
+                            }
+                        } else if (
+                            op.opcode == OP(BRANCHIND) ||
+                            op.opcode == OP(RETURN)) {
                             end_bb = true;
                             break;
                         }
@@ -379,11 +397,13 @@ LPX(TranslationResult) *LPX(translate)(LPX(Context) c,
                                        unsigned int num_bytes,
                                        uintb address,
                                        unsigned int max_instructions,
-                                       bool bb_terminating)
+                                       bool bb_terminating,
+                                       bool bb_nonlinear_terminating)
 {
     return ((TranslationContext *)c)->translate(bytes, num_bytes, address,
                                                 max_instructions,
-                                                bb_terminating);
+                                                bb_terminating,
+                                                bb_nonlinear_terminating);
 }
 
 void LPX(freeResult)(LPX(TranslationResult) *r)

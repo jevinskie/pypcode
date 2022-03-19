@@ -184,7 +184,7 @@ void LPX(destroyContext)(LPX(Context) c);
 /*
  * Translate machine code to P-code
  */
-LPX(TranslationResult) *LPX(translate)(LPX(Context) c, const unsigned char *bytes, unsigned int num_bytes, uintb address, unsigned int max_instructions, bool bb_terminating);
+LPX(TranslationResult) *LPX(translate)(LPX(Context) c, const unsigned char *bytes, unsigned int num_bytes, uintb address, unsigned int max_instructions, bool bb_terminating, bool bb_nonlinear_terminating);
 
 /*
  * Free a TranslationResult

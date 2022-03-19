@@ -164,7 +164,7 @@ class Context:
     """
     self._cached_addr_spaces[cobj] = pobj
 
-  def translate(self, code:Union[bytes, bytearray, memoryview], base:int, max_inst:int = 0, max_bytes:int = 0, bb_terminating:bool = False) -> 'TranslationResult':
+  def translate(self, code:Union[bytes, bytearray, memoryview], base:int, max_inst:int = 0, max_bytes:int = 0, bb_terminating:bool = False, bb_nonlinear_terminating:bool = False) -> 'TranslationResult':
     """
     Disassemble and translate to p-code.
 
@@ -176,7 +176,7 @@ class Context:
     """
     c_data = ffi.from_buffer(code)
     max_bytes = min(len(code), max_bytes) if (max_bytes > 0) else len(code)
-    res_c = csleigh_translate(self.ctx_c, c_data, max_bytes, base, max_inst, bb_terminating)
+    res_c = csleigh_translate(self.ctx_c, c_data, max_bytes, base, max_inst, bb_terminating, bb_nonlinear_terminating)
     res = TranslationResult.from_c(self, res_c)
     csleigh_freeResult(res_c)
     if res.error is None:
@@ -384,10 +384,9 @@ class PcodeOp(ContextObj):
     'da', 'd',
     'aa', 'a',
     'ba', 'b',
-    'address',
     )
 
-  seq: int
+  seq: SeqNum
   opcode: OpCode
   output: Optional[Varnode]
   inputs: Sequence[Varnode]
@@ -397,7 +396,6 @@ class PcodeOp(ContextObj):
   a: Optional
   ba: Optional[Varnode]
   b: Optional
-  address: Optional[int]
 
   def __init__(self, ctx:Context, seq:int, opcode:OpCode, inputs:Sequence[Varnode], output:Optional[Varnode] = None):
     super().__init__(ctx)
@@ -411,6 +409,11 @@ class PcodeOp(ContextObj):
     return cls(ctx, SeqNum.from_c(ctx, cobj.seq), OpCode(cobj.opcode),
       [Varnode.from_c(ctx, cobj.inputs[i]) for i in range(cobj.inputs_count)],
       Varnode.from_c(ctx, cobj.output) if cobj.output else None)
+
+  @property
+  def address(self) -> int:
+    return self.seq.pc.offset
+  
 
   def __str__(self):
     s = ''
@@ -627,7 +630,6 @@ class Translation(ContextObj):
     for i in range(cobj.ops_count):
       cop = cobj.ops[i]
       op = PcodeOp.from_c(ctx, cop)
-      op.address = addr.offset
       ops.append(op)
     return cls(ctx, addr,
                cobj.length,
