@@ -333,6 +333,9 @@ class Varnode(ContextObj):
   def __str__(self):
     return '%s[%#x:%d]' % (self.space.name, self.offset, self.size)
 
+  def __hash__(self) -> int:
+    return hash((self.space.name, self.offset, self.size))
+
   def get_addr(self) -> Address:
     return Address(self.ctx, self.space, self.offset)
 

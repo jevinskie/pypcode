@@ -329,7 +329,9 @@ public:
                             }
                         } else if (
                             op.opcode == OP(BRANCHIND) ||
-                            op.opcode == OP(RETURN)) {
+                            op.opcode == OP(RETURN) ||
+                            op.opcode == OP(CALL) ||
+                            op.opcode == OP(CALLIND)) {
                             end_bb = true;
                             break;
                         }
